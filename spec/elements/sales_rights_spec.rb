@@ -27,8 +27,11 @@ describe ONIX::SalesRights do
     sr = ONIX::SalesRights.new
     sr.sales_rights_type = 2
     sr.should include_the_xml("<SalesRightsType>02</SalesRightsType>")
-    sr.rights_territories = ["WORLD"]
-    sr.should include_the_xml("<RightsTerritory>WORLD</RightsTerritory>")
+    sr.rights_countries = ["AU", "NZ"]
+    sr.should include_the_xml("<RightsCountry>AU</RightsCountry>")
+    sr.should include_the_xml("<RightsCountry>NZ</RightsCountry>")
+    sr.rights_territories = ["ECZ", "ROW"]
+    sr.should include_the_xml("<RightsTerritory>ECZ ROW</RightsTerritory>")
   end
 
   it "should provide an array for deprecated rights regions" do

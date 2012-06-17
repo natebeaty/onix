@@ -176,7 +176,8 @@ module ONIX
           ONIX::Code.new(list_number, data, code_opts)
         end
       }
-      options = options.merge(:from => tag_name, :as => [])
+      options[:as] ||= []
+      options = options.merge(:from => tag_name)
       xml_accessor("#{name}_codes", options, &prep)
 
       define_method(name) do
@@ -194,10 +195,24 @@ module ONIX
     end
 
 
-    # Sugar for a common case -- country or territory codes.
+    # Sugar for common case elements which are
+    # NOT repeatable but space-separated (eg, territory codes).
+    # The reader parses only the first element.
+    # The writer outputs one element containing space-separated codes.
     #
     def self.onix_spaced_codes_from_list(name, tag_name, options)
       options[:to_xml] ||= ONIX::Formatters.space_separated
+      onix_codes_from_list(name, tag_name, options.merge(:as => :text)) { |v| v ? v.split : [] }
+    end
+
+
+    # Sugar for common case elements which are
+    # repeatable and space-separated (eg, country codes).
+    # The reader parses multiple elements.
+    # The writer outputs one element per code.
+    #
+    def self.onix_repeatable_spaced_codes_from_list(name, tag_name, options)
+      options[:to_xml] ||= [ONIX::Formatters.space_separated]
       onix_codes_from_list(name, tag_name, options) { |v| v ? v.split : [] }
     end
 
@@ -276,7 +291,6 @@ module ONIX
     def initialize(options = {})
       options.stringify_keys!
       if self.class.accessor_names
-        self.class.accessor_names = self.class.accessor_names.dup
         self.class.accessor_names.each { |name|
           asgn = "#{name}="
           raise "Can't assign #{name} for #{self.class} - accessor_names inheritance error?" unless respond_to?(asgn)
@@ -284,7 +298,6 @@ module ONIX
         }
       end
       if self.class.xml_array_accessors
-        self.class.xml_array_accessors = self.class.xml_array_accessors.dup
         self.class.xml_array_accessors.each { |name|
           asgn = "#{name}="
           raise "Can't assign #{name} for #{self.class} - xml_array_accessors inheritance error?" unless respond_to?(asgn)

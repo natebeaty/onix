@@ -146,7 +146,7 @@ describe ONIX::Element, "custom accessors" do
       xml_name "TestElementA"
       onix_codes_from_list(:ccs, "CC", :list => 91) { |v| v ? v.split : [] }
       # ...this is simply sugar for the previous declaration
-      onix_spaced_codes_from_list(:dds, "DD", :list => 91)
+      onix_repeatable_spaced_codes_from_list(:dds, "DD", :list => 91)
     end
     xml = %Q`
       <TestElementA>

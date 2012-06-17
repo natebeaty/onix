@@ -6,7 +6,7 @@
 #
 class ONIX::NotForSale < ONIX::Element
   xml_name "NotForSale"
-  onix_spaced_codes_from_list :rights_countries, "RightsCountry", :list => 91
+  onix_repeatable_spaced_codes_from_list :rights_countries, "RightsCountry", :list => 91
   onix_spaced_codes_from_list :rights_territories, "RightsTerritory", :list => 49
   onix_composite :product_identifiers, ONIX::ProductIdentifier
   xml_accessor :publisher_name, :from => "PublisherName"

@@ -73,7 +73,7 @@ module ONIX
 
     # Returns the string representation of the value. eg, "Hardback".
     #
-    def to_str
+    def to_val
       @value.to_s
     end
 

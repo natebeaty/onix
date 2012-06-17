@@ -25,7 +25,9 @@ describe ONIX::NotForSale do
   it "should provide write access to first level attributes" do
     nfs = ONIX::NotForSale.new
     nfs.rights_countries = ["GB", "US", "IE"]
-    nfs.should include_the_xml("<RightsCountry>GB US IE</RightsCountry>")
+    nfs.should include_the_xml("<RightsCountry>GB</RightsCountry>")
+    nfs.should include_the_xml("<RightsCountry>US</RightsCountry>")
+    nfs.should include_the_xml("<RightsCountry>IE</RightsCountry>")
   end
 
 end

@@ -14,6 +14,6 @@ class ONIX::Contributor < ONIX::NameBase
   onix_composite :websites, ONIX::Website
   xml_accessor :contributor_description, :from => "ContributorDescription"
   onix_code_from_list :unnamed_persons, "UnnamedPersons", :list => 19
-  onix_spaced_codes_from_list :country_codes, "CountryCode", :list => 91
-  onix_spaced_codes_from_list :region_codes, "RegionCode", :list => 49
+  onix_repeatable_spaced_codes_from_list :country_codes, "CountryCode", :list => 91
+  onix_repeatable_spaced_codes_from_list :region_codes, "RegionCode", :list => 49
 end

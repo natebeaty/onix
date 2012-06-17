@@ -28,7 +28,7 @@ module ONIX
     onix_code_from_list :price_status, "PriceStatus", :list => 61
     onix_decimal_accessor :price_amount, "PriceAmount"
     onix_code_from_list :currency_code, "CurrencyCode", :list => 96
-    onix_spaced_codes_from_list :country_codes, "CountryCode", :list => 91
+    onix_repeatable_spaced_codes_from_list :country_codes, "CountryCode", :list => 91
     onix_spaced_codes_from_list :territories, "Territory", :list => 49
     onix_spaced_codes_from_list :countries_excluded, "CountryExcluded", :list => 91
     onix_spaced_codes_from_list :territories_excluded, "TerritoryExcluded", :list => 49
