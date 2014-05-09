@@ -2,9 +2,9 @@
 
 module ONIX; module CodeLists
   LIST_66 = {
-    "Y" => "Yes, returnable, full copies only",
     "N" => "No, not returnable",
-    "C" => "Conditional",
-    "S" => "Yes, returnable, stripped cover"
+    "Y" => "Yes, returnable, full copies only",
+    "S" => "Yes, returnable, stripped cover",
+    "C" => "Conditional"
   }
 end; end

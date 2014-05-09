@@ -14,6 +14,9 @@ module ONIX; module CodeLists
     "09" => "Unknown",
     "10" => "Remaindered",
     "11" => "Withdrawn from sale",
-    "12" => "Recalled"
+    "12" => "Recalled",
+    "15" => "Recalled",
+    "16" => "Temporarily withdrawn from sale",
+    "17" => "Permanently withdrawn from sale"
   }
 end; end

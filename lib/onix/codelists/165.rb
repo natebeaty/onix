@@ -4,6 +4,7 @@ module ONIX; module CodeLists
   LIST_165 = {
     "01" => "Supplier's sales classification",
     "02" => "Supplier's bonus eligibility",
-    "03" => "Publisher's sales classification"
+    "03" => "Publisher's sales classification",
+    "04" => "Supplier's pricing restriction classification"
   }
 end; end

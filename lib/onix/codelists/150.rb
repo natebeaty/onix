@@ -105,6 +105,7 @@ module ONIX; module CodeLists
     "VN" => "HD DVD",
     "VO" => "Blu-ray",
     "VP" => "UMD Video",
+    "VQ" => "CBHD",
     "VZ" => "Other video format",
     "XA" => "Trade-only material",
     "XB" => "Dumpbin – empty",
@@ -125,6 +126,11 @@ module ONIX; module CodeLists
     "ZD" => "Toy",
     "ZE" => "Game",
     "ZF" => "T-shirt",
+    "ZG" => "E-book reader",
+    "ZH" => "Tablet computer",
+    "ZI" => "Audiobook player",
+    "ZJ" => "Jigsaw",
+    "ZY" => "Other apparel",
     "ZZ" => "Other merchandise"
   }
 end; end

@@ -15,9 +15,11 @@ module ONIX; module CodeLists
     "10" => "YYYYSYYYYS",
     "11" => "YYYYYYYY",
     "12" => "Text string",
-    "20" => "YYYYMMDD",
-    "21" => "YYYYMM",
-    "25" => "YYYY",
-    "32" => "Text string"
+    "13" => "YYYYMMDDThhmm",
+    "14" => "YYYYMMDDThhmmss",
+    "20" => "YYYYMMDD (H)",
+    "21" => "YYYYMM (H)",
+    "25" => "YYYY (H)",
+    "32" => "Text string (H)"
   }
 end; end

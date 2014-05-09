@@ -11,6 +11,10 @@ module ONIX; module CodeLists
     "07" => "Concurrent users",
     "08" => "Percentage per time period",
     "09" => "Days",
-    "10" => "Times"
+    "13" => "Weeks",
+    "14" => "Months",
+    "10" => "Times",
+    "11" => "Allowed usage start page",
+    "12" => "Allowed usage end page"
   }
 end; end

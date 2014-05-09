@@ -7,6 +7,7 @@ module ONIX; module CodeLists
     "06" => "DOI",
     "09" => "PII",
     "10" => "SICI",
+    "11" => "ISTC",
     "15" => "ISBN-13"
   }
 end; end

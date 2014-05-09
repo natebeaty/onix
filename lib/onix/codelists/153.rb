@@ -15,6 +15,12 @@ module ONIX; module CodeLists
     "11" => "Feature",
     "12" => "Biographical note",
     "13" => "Publisher's notice",
-    "14" => "Excerpt"
+    "14" => "Excerpt",
+    "15" => "Index",
+    "16" => "Short description/annotation for collection",
+    "17" => "Description for collection",
+    "18" => "New feature",
+    "19" => "Version history",
+    "20" => "Open access statement"
   }
 end; end

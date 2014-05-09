@@ -7,7 +7,7 @@ module ONIX; module CodeLists
     "02" => "Publisher's website for a specified work",
     "03" => "Online hosting service home page",
     "04" => "Journal home page",
-    "05" => "Online journal 'available contents' page",
+    "05" => "Online resource 'available content' page",
     "06" => "Contributor's own website",
     "07" => "Publisher's website relating to specified contributor",
     "08" => "Other publisher's website relating to specified contributor",
@@ -37,6 +37,11 @@ module ONIX; module CodeLists
     "36" => "Supplier's website for a specified work",
     "37" => "Supplier's B2B website for a specified work",
     "38" => "Supplier's B2C website for a specified work",
-    "39" => "Supplier's website for a group or series of works"
+    "39" => "Supplier's website for a group or series of works",
+    "40" => "URL of full metadata description",
+    "41" => "Social networking URL for specific work or product",
+    "42" => "Author's social networking URL",
+    "43" => "Publisher's social networking URL",
+    "44" => "Social networking URL for specific article, chapter or content item"
   }
 end; end

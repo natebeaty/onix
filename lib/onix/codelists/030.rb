@@ -17,6 +17,8 @@ module ONIX; module CodeLists
     "25" => "Ausbildungsberuf",
     "26" => "Canadian school grade range",
     "27" => "Finnish school grade range",
-    "28" => "Finnish Upper secondary school course"
+    "28" => "Finnish Upper secondary school course",
+    "29" => "Chinese School Grade code",
+    "30" => "Nomenclature niveaux"
   }
 end; end

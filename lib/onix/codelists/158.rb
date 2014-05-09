@@ -27,6 +27,11 @@ module ONIX; module CodeLists
     "23" => "Wallpaper / screensaver",
     "24" => "Press release",
     "25" => "Table of contents",
-    "26" => "Trailer"
+    "26" => "Trailer",
+    "27" => "Cover thumbnail",
+    "28" => "Full content",
+    "29" => "Full cover",
+    "30" => "Master brand logo",
+    "99" => "License"
   }
 end; end

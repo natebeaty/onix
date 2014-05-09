@@ -14,6 +14,7 @@ module ONIX; module CodeLists
     "31" => "Out of stock",
     "32" => "Reprinting",
     "33" => "Awaiting reissue",
+    "34" => "Temporarily withdrawn from sale",
     "40" => "Not available (reason unspecified)",
     "41" => "Not available, replaced by new product",
     "42" => "Not available, other format available",

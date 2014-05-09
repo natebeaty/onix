@@ -14,6 +14,7 @@ module ONIX; module CodeLists
     "10" => "Distributor's title",
     "11" => "Alternative title on cover",
     "12" => "Alternative title on back",
-    "13" => "Expanded title"
+    "13" => "Expanded title",
+    "14" => "Alternative title"
   }
 end; end

@@ -7,6 +7,7 @@ module ONIX; module CodeLists
     "03" => "Commended",
     "04" => "Short-listed",
     "05" => "Long-listed",
-    "06" => "Joint winner"
+    "06" => "Joint winner",
+    "07" => "Nominated"
   }
 end; end

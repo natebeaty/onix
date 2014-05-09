@@ -12,6 +12,8 @@ module ONIX; module CodeLists
     "08" => "Livre scolaire, déclaré par l'éditeur",
     "09" => "Livre scolaire (non spécifié)",
     "10" => "Supplement to newspaper",
-    "11" => "Precio libre textbook"
+    "11" => "Precio libre textbook",
+    "12" => "News outlet edition",
+    "13" => "US textbook"
   }
 end; end

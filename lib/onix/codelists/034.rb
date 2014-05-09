@@ -16,6 +16,7 @@ module ONIX; module CodeLists
     "11" => "ECMA 376 WordprocessingML",
     "12" => "ISO 26300 ODF",
     "13" => "Corel Wordperfect binary format (DOC)",
-    "14" => "EPUB"
+    "14" => "EPUB",
+    "15" => "XPS"
   }
 end; end

@@ -53,6 +53,7 @@ module ONIX; module CodeLists
     "DL" => "Memory Stick Memory Card",
     "DM" => "USB Flash Drive",
     "DN" => "Double-sided CD/DVD",
+    "DO" => "Digital product license key",
     "DZ" => "Other digital",
     "FA" => "Film or transparency",
     "FB" => "Film",
@@ -124,6 +125,11 @@ module ONIX; module CodeLists
     "ZD" => "Toy",
     "ZE" => "Game",
     "ZF" => "T-shirt",
+    "ZG" => "E-book reader",
+    "ZH" => "Tablet computer",
+    "ZI" => "Audiobook player",
+    "ZJ" => "Jigsaw",
+    "ZY" => "Oher apparel",
     "ZZ" => "Other merchandise"
   }
 end; end

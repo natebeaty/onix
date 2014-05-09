@@ -17,6 +17,14 @@ module ONIX; module CodeLists
     "18" => "LCCN",
     "19" => "Japanese Publisher identifier",
     "20" => "GKD",
-    "21" => "ORCID"
+    "21" => "ORCID",
+    "22" => "GAPP Publisher Identifier",
+    "23" => "VAT Identity Number",
+    "24" => "JP Distribution Identifier",
+    "25" => "GND",
+    "26" => "DUNS",
+    "27" => "Ringgold ID",
+    "28" => "Identifiant Editeur Electre",
+    "30" => "Identifiant Marque Electre"
   }
 end; end

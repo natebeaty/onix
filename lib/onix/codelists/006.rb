@@ -54,8 +54,8 @@ module ONIX; module CodeLists
     "49" => "UPC12+5 (item-specific) on back",
     "50" => "UPC12 (price-point) on back",
     "51" => "UPC12+5 (price-point) on back",
-    "52" => "EAN13+5 on outer sleeve/back (US dollar price encoded)",
-    "53" => "EAN13+5 on outer sleeve/back",
+    "52" => "EAN13 on outer sleeve/back",
+    "53" => "EAN13+5 on outer sleeve/back (US dollar price encoded)",
     "54" => "UPC12 (item-specific) on outer sleeve/back",
     "55" => "UPC12+5 (item-specific) on outer sleeve/back",
     "56" => "UPC12 (price-point) on outer sleeve/back",
@@ -77,6 +77,6 @@ module ONIX; module CodeLists
     "72" => "EAN13+5 on tag (CAN dollar price encoded)",
     "73" => "EAN13+5 on bottom (CAN dollar price encoded)",
     "74" => "EAN13+5 on back (CAN dollar price encoded)",
-    "75" => "EAN13 on outer sleeve/back (CAN dollar price encoded)"
+    "75" => "EAN13+5 on outer sleeve/back (CAN dollar price encoded)"
   }
 end; end

@@ -14,7 +14,7 @@ module ONIX; module CodeLists
     "20" => "Additional images / graphics not part of main work",
     "12" => "Maps and/or other cartographic content",
     "01" => "Audiobook",
-    "02" => "Performance - spoken word",
+    "02" => "Performance – spoken word",
     "13" => "Other speech content",
     "03" => "Music recording",
     "04" => "Other audio",

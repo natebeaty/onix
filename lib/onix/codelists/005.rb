@@ -15,6 +15,10 @@ module ONIX; module CodeLists
     "22" => "URN",
     "23" => "OCLC number",
     "24" => "Co-publisher's ISBN-13",
-    "25" => "ISMN-13"
+    "25" => "ISMN-13",
+    "26" => "ISBN-A",
+    "27" => "JP e-code",
+    "28" => "OLCC number",
+    "29" => "JP Magazine ID"
   }
 end; end

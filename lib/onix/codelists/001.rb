@@ -9,8 +9,8 @@ module ONIX; module CodeLists
     "05" => "Delete",
     "08" => "Notice of sale",
     "09" => "Notice of acquisition",
-    "12" => "Update - SupplyDetail only",
-    "13" => "Update - MarketRepresentation only",
-    "14" => "Update - SupplyDetail and MarketRepresentation"
+    "12" => "Update – SupplyDetail only",
+    "13" => "Update – MarketRepresentation only",
+    "14" => "Update – SupplyDetail and MarketRepresentation"
   }
 end; end

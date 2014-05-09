@@ -9,6 +9,7 @@ module ONIX; module CodeLists
     "06" => "GLN",
     "07" => "SAN",
     "12" => "Distributeurscode Boekenbank",
-    "13" => "Fondscode Boekenbank"
+    "13" => "Fondscode Boekenbank",
+    "23" => "VAT Identity Number"
   }
 end; end

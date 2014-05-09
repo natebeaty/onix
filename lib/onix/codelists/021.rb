@@ -3,6 +3,7 @@
 module ONIX; module CodeLists
   LIST_21 = {
     "ABR" => "Abridged",
+    "ACT" => "Acting edtion",
     "ADP" => "Adapted",
     "ALT" => "Alternate",
     "ANN" => "Annotated",

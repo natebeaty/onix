@@ -71,6 +71,9 @@ module ONIX; module CodeLists
     "B23" => "General rapporteur",
     "B24" => "Literary editor",
     "B25" => "Arranged by (music)",
+    "B26" => "Technical editor",
+    "B27" => "Thesis advisor or supervisor",
+    "B28" => "Thesis examiner",
     "B99" => "Other adaptation by",
     "C01" => "Compiled by",
     "C02" => "Selected by",
@@ -87,10 +90,13 @@ module ONIX; module CodeLists
     "E06" => "Instrumental soloist",
     "E07" => "Read by",
     "E08" => "Performed by (orchestra, band, ensemble)",
+    "E09" => "Speaker",
     "E99" => "Performed by",
     "F01" => "Filmed/photographed by",
+    "F02" => "Editor (film or video)",
     "F99" => "Other recording by",
     "Z01" => "Assisted by",
+    "Z98" => "(Various roles)",
     "Z99" => "Other"
   }
 end; end

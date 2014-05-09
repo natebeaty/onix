@@ -8,6 +8,8 @@ module ONIX; module CodeLists
     "04" => "German Books in Print series ID",
     "05" => "Electre series ID",
     "06" => "DOI",
-    "22" => "URN"
+    "15" => "ISBN-13",
+    "22" => "URN",
+    "29" => "Identifiant BNF des publications en série"
   }
 end; end

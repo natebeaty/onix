@@ -17,6 +17,7 @@ module ONIX; module CodeLists
     "12" => "Not available in this market",
     "13" => "Active, but not sold separately",
     "14" => "Active, with market restrictions",
-    "15" => "Recalled for reasons of consumer safety"
+    "15" => "Recalled",
+    "16" => "Temporarily withdrawn from sale"
   }
 end; end

@@ -6,6 +6,7 @@ module ONIX; module CodeLists
     "01" => "Pseudonym",
     "02" => "Authority-controlled name",
     "03" => "Earlier name",
-    "04" => "'Real' name"
+    "04" => "'Real' name",
+    "05" => "Transliterated form of primary name"
   }
 end; end

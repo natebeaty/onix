@@ -14,6 +14,8 @@ module ONIX; module CodeLists
     "10" => "Notional number of pages in digital product",
     "11" => "Content page count",
     "12" => "Total unnumbered insert page count",
+    "13" => "Duration of introductory matter",
+    "14" => "Duration of main content",
     "22" => "Filesize"
   }
 end; end

@@ -6,6 +6,7 @@ module ONIX; module CodeLists
     "10" => "Multiple-item retail product",
     "11" => "Multiple-item collection, retailed as separate parts",
     "20" => "Trade-only product",
-    "30" => "Multiple-item trade pack"
+    "30" => "Multiple-item trade pack",
+    "31" => "Multiple-item pack"
   }
 end; end

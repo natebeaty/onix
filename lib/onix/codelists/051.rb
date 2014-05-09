@@ -31,6 +31,11 @@ module ONIX; module CodeLists
     "27" => "Electronic version available as",
     "28" => "Enhanced version available as",
     "29" => "Basic version available as",
-    "30" => "Product in same collection"
+    "30" => "Product in same collection",
+    "31" => "Has alternative in a different market sector",
+    "32" => "Has equivalent intended for a different market",
+    "33" => "Has alternative intended for different market",
+    "34" => "Cites",
+    "35" => "Is cited by"
   }
 end; end

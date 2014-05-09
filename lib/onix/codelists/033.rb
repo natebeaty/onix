@@ -23,6 +23,7 @@ module ONIX; module CodeLists
     "19" => "Feature",
     "20" => "New feature",
     "21" => "Publisher's notice",
+    "22" => "Index",
     "23" => "Excerpt from book",
     "24" => "First chapter",
     "25" => "Description for sales people",
@@ -38,6 +39,12 @@ module ONIX; module CodeLists
     "40" => "Author interview / QandA",
     "41" => "Reading Group Guide",
     "42" => "Commentary / discussion",
+    "43" => "Short description for series or set",
+    "44" => "Long description for series or set",
+    "45" => "Contributor event schedule",
+    "46" => "License",
+    "47" => "Open access statement",
+    "98" => "Master brand name",
     "99" => "Country of final manufacture"
   }
 end; end

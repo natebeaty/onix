@@ -46,6 +46,10 @@ module ONIX; module CodeLists
     "041" => "Android 'app'",
     "042" => "Other 'app'",
     "043" => "XPS",
+    "044" => "iBook",
+    "045" => "ePIB",
+    "046" => "SCORM",
+    "047" => "EBP",
     "098" => "Multiple formats",
     "099" => "Unspecified"
   }

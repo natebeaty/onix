@@ -7,6 +7,7 @@ module ONIX; module CodeLists
     "02" => "Clamshell",
     "03" => "Keep case",
     "05" => "Jewel case",
+    "06" => "Digipak",
     "09" => "In box",
     "10" => "Slip-cased",
     "11" => "Slip-cased set",

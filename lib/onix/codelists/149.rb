@@ -5,6 +5,7 @@ module ONIX; module CodeLists
     "01" => "Product",
     "02" => "Collection level",
     "03" => "Subcollection",
-    "04" => "Content item"
+    "04" => "Content item",
+    "05" => "Master brand"
   }
 end; end

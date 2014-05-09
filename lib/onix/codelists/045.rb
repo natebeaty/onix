@@ -14,6 +14,11 @@ module ONIX; module CodeLists
     "10" => "Publishing group",
     "11" => "Publisher of facsimile original",
     "12" => "Repackager of prebound edition",
-    "13" => "Former publisher"
+    "13" => "Former publisher",
+    "14" => "Publication funder",
+    "15" => "Research funder",
+    "16" => "Funding body",
+    "17" => "Printer",
+    "18" => "Binder"
   }
 end; end

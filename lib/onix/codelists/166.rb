@@ -4,6 +4,7 @@ module ONIX; module CodeLists
   LIST_166 = {
     "02" => "Embargo date",
     "08" => "Expected availability date",
-    "18" => "Last date for returns"
+    "18" => "Last date for returns",
+    "25" => "Reservation order deadline"
   }
 end; end

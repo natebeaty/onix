@@ -6,7 +6,8 @@ module ONIX; module CodeLists
     "02" => "Image height in pixels",
     "03" => "Image width in pixels",
     "04" => "Filename",
-    "05" => "Download file size in Mbytes",
-    "06" => "MD5 hash value"
+    "05" => "Approximate download file size in megabytes",
+    "06" => "MD5 hash value",
+    "07" => "Exact download file size in bytes"
   }
 end; end
