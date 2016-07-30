@@ -36,7 +36,7 @@ module ONIX
 
     # retrieve the proprietary ID
     def proprietary_id
-      identifier(1).tr(:id_value)
+      identifier(1).try(:id_value)
     end
 
     # set a new proprietary ID
