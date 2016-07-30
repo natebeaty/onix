@@ -43,9 +43,9 @@ module ONIX
       lambda do |val|
         if val.nil?
           nil
-        elsif val < 10
+        elsif val.to_i < 10
           "0#{val}"
-        elsif val > 99
+        elsif val.to_i > 99
           val.to_s[-2,2]
         else
           val.to_s
