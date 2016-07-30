@@ -21,8 +21,8 @@ describe ONIX::AudienceRange do
     aud.audience_range_precisions[0].should eql(3)
     aud.audience_range_precisions[1].should eql(4)
     aud.audience_range_values.size.should eql(2)
-    aud.audience_range_values[0].should eql(3)
-    aud.audience_range_values[1].should eql(5)
+    aud.audience_range_values[0].should eql('K')
+    aud.audience_range_values[1].should eql('5')
   end
 
   it "should provide write access to first level attributes" do
