@@ -25,17 +25,20 @@ describe ONIX::AudienceRange do
     aud.audience_range_values[1].should eql('5')
   end
 
-  it "should provide write access to first level attributes" do
+  it "should provide write audience range as exact value" do
     aud = ONIX::AudienceRange.new
-
-    aud.audience_range_qualifier = 12
-    aud.to_xml.to_s.include?("<AudienceRangeQualifier>12</AudienceRangeQualifier>").should be_true
-
-    aud.audience_range_precisions = [888]
-    aud.to_xml.to_s.include?("<AudienceRangePrecision>888</AudienceRangePrecision>").should be_true
-
+    aud.audience_range_qualifier = 12  # UK school grade
+    aud.audience_range_precisions = [1]  # Exact
     aud.audience_range_values = [999]
-    aud.to_xml.to_s.include?("<AudienceRangeValue>999</AudienceRangeValue>").should be_true
+    aud.to_xml.to_s.should eql("<AudienceRange>\n  <AudienceRangeQualifier>12</AudienceRangeQualifier>\n  <AudienceRangePrecision>01</AudienceRangePrecision>\n  <AudienceRangeValue>999</AudienceRangeValue>\n</AudienceRange>")
+  end
+
+  it "should write audience range as bounded" do
+    aud = ONIX::AudienceRange.new
+    aud.audience_range_qualifier = 18  # Reading age, years
+    aud.audience_range_precisions = [3,4]  # From, To
+    aud.audience_range_values = [9,12]
+    aud.to_xml.to_s.should eql("<AudienceRange>\n  <AudienceRangeQualifier>18</AudienceRangeQualifier>\n  <AudienceRangePrecision>03</AudienceRangePrecision>\n  <AudienceRangeValue>9</AudienceRangeValue>\n  <AudienceRangePrecision>04</AudienceRangePrecision>\n  <AudienceRangeValue>12</AudienceRangeValue>\n</AudienceRange>")
   end
 
 end
