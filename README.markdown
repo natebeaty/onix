@@ -1,41 +1,26 @@
 ## ONIX
 
-The ONIX standard is a somewhat verbose XML format that is rapidly becoming the
-industry standard for electronic data sharing in the book and publishing
-industries.
+[ONIX for Books](http://www.editeur.org/8/ONIX/) is the international standard for representing and communicating
+book industry product information in electronic form. It consists of an XML DTD
+and schema.
 
-This library provides a slim layer over the format and simplifies both reading
-and writing ONIX files in your ruby applications.
+This ONIX library provides a thin wrapper to the ONIX for Books XML standard.
+It simplifies both the reading and writing of ONIX files in your Ruby applications.
 
-This replaces the obsolete rbook-onix gem that was spectacular in its crapness.
-Let us never speak of it again.
+## Limitations
 
-## Feature Support
-
-This library currently only handles ONIX 2.1 files (all revisions). At some
-point I'll need to work out what to do about supporting ONIX 3.0 files. I
-suspect a separate library will be the simplest solution.
+This library supports ONIX 2.1 files only (all revisions).
 
 ONIX::Reader only handles the reference tag versions of ONIX 2.1. Use
 ONIX::Normaliser to convert any short tag files to reference tags.
 
 ONIX::Writer only generates reference tag ONIX files.
 
-It baffles me why anyone thought designing two parallel versions of the ONIX
-spec was a good idea. Use reference tags my friends, and let short tags fade
-away into irrelevant obscurity.
-
 ## DTD Loading
 
-To correctly handle named entities when reading an ONIX file, this gem attempts
-to load the DTD describing the ONIX format into memory. By default, this means
-each file you read will require several hundred Kb of data to be downloaded
-over the net.
-
-This is obviously not desirable in most cases. To avoid it, you need to add copies
-of the ONIX DTDs into your system XML catalog. On Debian and Ubuntu systems,
-the quickest way to do that is to build and install the package available @
-http://github.com/yob/onix-dtd
+To correctly interpret named entities when reading an ONIX 2.1 file,
+your system XML catalog must include the ONIX DTD. For more information,
+consult the instructions at http://github.com/yob/onix-dtd
 
 ## Installation
 
@@ -49,7 +34,7 @@ view the comments to the following classes:
 * ONIX::Reader - For reading ONIX files
 * ONIX::Writer - For writing ONIX files
 * ONIX::Normaliser - For normalising ONIX files before reading them. Fixes encoding issues, etc
-* ONIX::Lists  - For building hashes of code lists from the ONIX spec
+* ONIX::Lists - For building hashes of code lists from the ONIX spec
 
 ## Licensing
 
@@ -58,10 +43,8 @@ more detail.
 
 ## Contributing
 
-All suggestions and patches welcome, preferably via a git repository I can pull from.
-To be honest, I'm not really expecting any, this is a niche library.
+If you find a bug or would like to contribute functionality, please create an [issue on GitHub](https://github.com/milkfarm/onix/issues) or fork the project and send a pull request.
 
-## Further Reading
+## Special Thanks
 
-- The source: [http://github.com/yob/onix/tree/master](http://github.com/yob/onix/tree/master)
-- The official specs [http://www.editeur.org/8/ONIX/](http://www.editeur.org/8/ONIX/)
+This code is derived from the work of [James Healy](https://github.com/yob) and [Joseph Pearson](https://github.com/joseph)
