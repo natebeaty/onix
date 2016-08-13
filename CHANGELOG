@@ -1,3 +1,7 @@
+v0.10.0 (13th August 2016)
+- Merge joseph-refactor branch into master. This is a significant,
+  opinionated change to the structure of the original gem.
+
 v0.9.1 (5th September 2011)
 - relax activesupport dependency to work with rails 3 or 3.1
 
