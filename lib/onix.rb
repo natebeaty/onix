@@ -6,15 +6,6 @@ require 'singleton'
 require 'roxml'
 
 module ONIX
-  module Version #:nodoc:
-    Major = 0
-    Minor = 9
-    Tiny  = 0
-
-    String = [Major, Minor, Tiny].join('.')
-  end
-
-  VERSION = ONIX::Version::String
 
   class Formatters
     def self.decimal

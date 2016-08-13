@@ -1,6 +1,10 @@
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
+require "onix/version"
+
 Gem::Specification.new do |s|
   s.name              = "onix"
-  s.version           = "0.10.0"
+  s.version           = ONIX::VERSION
   s.summary           = "A convenient mapping between Ruby objects and the " +
                         "ONIX 2.1 XML specification"
   s.description       = "ONIX is the standard XML format for electronic data " +
