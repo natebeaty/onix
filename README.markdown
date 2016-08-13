@@ -1,5 +1,7 @@
 ## ONIX
 
+[![Build Status](https://travis-ci.org/milkfarm/onix.svg?branch=master)](https://travis-ci.org/milkfarm/onix)
+
 [ONIX for Books](http://www.editeur.org/8/ONIX/) is the international standard for representing and communicating
 book industry product information in electronic form. It consists of an XML DTD
 and schema.
