@@ -10,28 +10,28 @@ describe ONIX::Language do
 
   it "should correctly convert to a string" do
     lan = ONIX::Language.from_xml(@root.to_s)
-    lan.to_xml.to_s[0,10].should eql("<Language>")
+    expect(lan.to_xml.to_s[0,10]).to eql("<Language>")
   end
 
   it "should provide read access to first level attributes" do
     lan = ONIX::Language.from_xml(@root.to_s)
 
-    lan.language_role.should eql(1)
-    lan.language_code.should eql("eng")
-    lan.country_code.should eql("US")
+    expect(lan.language_role).to eql(1)
+    expect(lan.language_code).to eql("eng")
+    expect(lan.country_code).to eql("US")
   end
 
   it "should provide write access to first level attributes" do
     lan = ONIX::Language.new
 
     lan.language_role = 2
-    lan.to_xml.to_s.include?("<LanguageRole>02</LanguageRole>").should be_true
+    expect(lan.to_xml.to_s.include?("<LanguageRole>02</LanguageRole>")).to be_truthy
 
     lan.language_code = "aar"
-    lan.to_xml.to_s.include?("<LanguageCode>aar</LanguageCode>").should be_true
+    expect(lan.to_xml.to_s.include?("<LanguageCode>aar</LanguageCode>")).to be_truthy
 
     lan.country_code = "AD"
-    lan.to_xml.to_s.include?("<CountryCode>AD</CountryCode>").should be_true
+    expect(lan.to_xml.to_s.include?("<CountryCode>AD</CountryCode>")).to be_truthy
   end
 
 end

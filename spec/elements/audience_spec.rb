@@ -10,24 +10,24 @@ describe ONIX::Audience do
 
   it "should correctly convert to a string" do
     a = ONIX::Audience.from_xml(@root.to_s)
-    a.to_xml.to_s[0,10].should eql("<Audience>")
+    expect(a.to_xml.to_s[0,10]).to eql("<Audience>")
   end
 
   it "should provide read access to first level attributes" do
     a = ONIX::Audience.from_xml(@root.to_s)
-    a.audience_code_type.should eql(2)
-    a.audience_code_type_name.should eql("Guided Reading Level")
-    a.audience_code_value.should eql("G")
+    expect(a.audience_code_type).to eql(2)
+    expect(a.audience_code_type_name).to eql("Guided Reading Level")
+    expect(a.audience_code_value).to eql("G")
   end
 
   it "should provide write access to first level attributes" do
     a = ONIX::Audience.new
 
     a.audience_code_type = 19
-    a.to_xml.to_s.include?("<AudienceCodeType>19</AudienceCodeType>").should be_true
+    expect(a.to_xml.to_s.include?("<AudienceCodeType>19</AudienceCodeType>")).to be_truthy
 
     a.audience_code_value = "480"
-    a.to_xml.to_s.include?("<AudienceCodeValue>480</AudienceCodeValue>").should be_true
+    expect(a.to_xml.to_s.include?("<AudienceCodeValue>480</AudienceCodeValue>")).to be_truthy
   end
 
 end

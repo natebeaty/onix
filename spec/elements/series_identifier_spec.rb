@@ -10,24 +10,24 @@ describe ONIX::SeriesIdentifier do
 
   it "should correctly convert to a string" do
     series = ONIX::SeriesIdentifier.from_xml(@root.to_s)
-    series.to_xml.to_s[0,18].should eql("<SeriesIdentifier>")
+    expect(series.to_xml.to_s[0,18]).to eql("<SeriesIdentifier>")
   end
 
   it "should provide read access to first level attributes" do
     series = ONIX::SeriesIdentifier.from_xml(@root.to_s)
 
-    series.series_id_type.should eql(1)
-    series.id_value.should eql("10001")
+    expect(series.series_id_type).to eql(1)
+    expect(series.id_value).to eql("10001")
   end
 
   it "should provide write access to first level attributes" do
     series = ONIX::SeriesIdentifier.new
 
     series.series_id_type = 9
-    series.to_xml.to_s.include?("<SeriesIDType>09</SeriesIDType>").should be_true
+    expect(series.to_xml.to_s.include?("<SeriesIDType>09</SeriesIDType>")).to be_truthy
 
     series.id_value = 999
-    series.to_xml.to_s.include?("<IDValue>999</IDValue>").should be_true
+    expect(series.to_xml.to_s.include?("<IDValue>999</IDValue>")).to be_truthy
   end
 
 end

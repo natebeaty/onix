@@ -10,24 +10,24 @@ describe ONIX::Subject do
 
   it "should correctly convert to a string" do
     sub = ONIX::Subject.from_xml(@root.to_s)
-    sub.to_xml.to_s[0,9].should eql("<Subject>")
+    expect(sub.to_xml.to_s[0,9]).to eql("<Subject>")
   end
 
   it "should provide read access to first level attributes" do
     sub = ONIX::Subject.from_xml(@root.to_s)
-    sub.subject_scheme_id.should eql(3)
-    sub.subject_scheme_name.should eql("RBA Subjects")
-    sub.subject_code.should eql("AABB")
+    expect(sub.subject_scheme_id).to eql(3)
+    expect(sub.subject_scheme_name).to eql("RBA Subjects")
+    expect(sub.subject_code).to eql("AABB")
   end
 
   it "should provide write access to first level attributes" do
     sub = ONIX::Subject.new
 
     sub.subject_scheme_id = 2
-    sub.to_xml.to_s.include?("<SubjectSchemeIdentifier>02</SubjectSchemeIdentifier>").should be_true
+    expect(sub.to_xml.to_s.include?("<SubjectSchemeIdentifier>02</SubjectSchemeIdentifier>")).to be_truthy
 
     sub.subject_code = "ABCD"
-    sub.to_xml.to_s.include?("<SubjectCode>ABCD</SubjectCode>").should be_true
+    expect(sub.to_xml.to_s.include?("<SubjectCode>ABCD</SubjectCode>")).to be_truthy
 
   end
 

@@ -10,27 +10,27 @@ describe ONIX::ProductWebsite do
 
   it "should correctly convert to a string" do
     web = ONIX::ProductWebsite.from_xml(@root.to_s)
-    web.to_xml.to_s[0,16].should eql("<ProductWebsite>")
+    expect(web.to_xml.to_s[0,16]).to eql("<ProductWebsite>")
   end
 
   it "should provide read access to first level attributes" do
     web = ONIX::ProductWebsite.from_xml(@root.to_s)
-    web.website_role.should eql(1)
-    web.product_website_description.should eql("The Child's World: Publishing books for schools and libraries since 1968")
-    web.product_website_link.should eql("http://childsworld.com")
+    expect(web.website_role).to eql(1)
+    expect(web.product_website_description).to eql("The Child's World: Publishing books for schools and libraries since 1968")
+    expect(web.product_website_link).to eql("http://childsworld.com")
   end
 
   it "should provide write access to first level attributes" do
     web = ONIX::ProductWebsite.new
 
     web.website_role = 2
-    web.to_xml.to_s.include?("<WebsiteRole>02</WebsiteRole>").should be_true
+    expect(web.to_xml.to_s.include?("<WebsiteRole>02</WebsiteRole>")).to be_truthy
 
     web.product_website_link = "PUBLISHER WEBSITE"
-    web.to_xml.to_s.include?("<ProductWebsiteLink>PUBLISHER WEBSITE</ProductWebsiteLink>").should be_true
+    expect(web.to_xml.to_s.include?("<ProductWebsiteLink>PUBLISHER WEBSITE</ProductWebsiteLink>")).to be_truthy
 
     web.product_website_link = "http://www.randomhouse.com"
-    web.to_xml.to_s.include?("<ProductWebsiteLink>http://www.randomhouse.com</ProductWebsiteLink>").should be_true
+    expect(web.to_xml.to_s.include?("<ProductWebsiteLink>http://www.randomhouse.com</ProductWebsiteLink>")).to be_truthy
   end
 
 end

@@ -16,10 +16,10 @@ describe ONIX::Writer do
     lines = @output.string.split("\n")
 
     # xml declaration
-    lines[0][0,5].should eql("<?xml")
+    expect(lines[0][0,5]).to eql("<?xml")
 
     # doctype
-    lines[1][0,9].should eql("<!DOCTYPE")
+    expect(lines[1][0,9]).to eql("<!DOCTYPE")
   end
 
   it "should output the correct xml metadata when used in block form" do
@@ -29,10 +29,10 @@ describe ONIX::Writer do
     lines = @output.string.split("\n")
 
     # xml declaration
-    lines[0][0,5].should eql("<?xml")
+    expect(lines[0][0,5]).to eql("<?xml")
 
     # doctype
-    lines[1][0,9].should eql("<!DOCTYPE")
+    expect(lines[1][0,9]).to eql("<!DOCTYPE")
   end
 
   it "should output the header node" do
@@ -42,7 +42,7 @@ describe ONIX::Writer do
 
     lines = @output.string.split("\n")
 
-    lines[3][0,7].should eql("<Header")
+    expect(lines[3][0,7]).to eql("<Header")
   end
 
   it "should output the product node" do
@@ -55,7 +55,7 @@ describe ONIX::Writer do
 
     lines = @output.string.split("\n")
 
-    lines[4][0,8].should eql("<Product")
+    expect(lines[4][0,8]).to eql("<Product")
   end
 
 
@@ -68,8 +68,8 @@ describe ONIX::Writer do
       end
     end
     out = @output.string
-    out.should include("<TitleText>Grimm's Fairy Tales</TitleText>")
-    out.should include("<PublicationDate>20110413</PublicationDate>")
+    expect(out).to include("<TitleText>Grimm's Fairy Tales</TitleText>")
+    expect(out).to include("<PublicationDate>20110413</PublicationDate>")
   end
 
   it "should output product nodes with interpretations" do
@@ -81,15 +81,15 @@ describe ONIX::Writer do
       writer.product { |p| p.title = "Grimm's Fairy Tales" }
     end
     out = @output.string
-    out.should include("<TitleText>Grimm's Fairy Tales</TitleText>")
+    expect(out).to include("<TitleText>Grimm's Fairy Tales</TitleText>")
   end
 
   it "should correctly store finished state" do
     header = ONIX::Header.new
     writer = ONIX::Writer.new(@output, header)
-    writer.finished?.should be_false
+    expect(writer.finished?).to be_falsey
     writer.end_document
-    writer.finished?.should be_true
+    expect(writer.finished?).to be_truthy
   end
 
 =begin

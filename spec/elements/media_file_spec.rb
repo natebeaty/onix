@@ -10,27 +10,27 @@ describe ONIX::MediaFile do
 
   it "should correctly convert to a string" do
     mf = ONIX::MediaFile.from_xml(@root.to_s)
-    mf.to_xml.to_s[0,11].should eql("<MediaFile>")
+    expect(mf.to_xml.to_s[0,11]).to eql("<MediaFile>")
   end
 
   it "should provide read access to first level attributes" do
     mf = ONIX::MediaFile.from_xml(@root.to_s)
-    mf.media_file_type_code.should eql(4)
-    mf.media_file_link_type_code.should eql(1)
-    mf.media_file_link.should eql("http://www.allenandunwin.com/BookCovers/resized_9788888028729_224_297_FitSquare.jpg")
+    expect(mf.media_file_type_code).to eql(4)
+    expect(mf.media_file_link_type_code).to eql(1)
+    expect(mf.media_file_link).to eql("http://www.allenandunwin.com/BookCovers/resized_9788888028729_224_297_FitSquare.jpg")
   end
 
   it "should provide write access to first level attributes" do
     mf = ONIX::MediaFile.new
 
     mf.media_file_type_code = 2
-    mf.to_xml.to_s.include?("<MediaFileTypeCode>02</MediaFileTypeCode>").should be_true
+    expect(mf.to_xml.to_s.include?("<MediaFileTypeCode>02</MediaFileTypeCode>")).to be_truthy
 
     mf.media_file_link_type_code = 1
-    mf.to_xml.to_s.include?("<MediaFileLinkTypeCode>01</MediaFileLinkTypeCode>").should be_true
+    expect(mf.to_xml.to_s.include?("<MediaFileLinkTypeCode>01</MediaFileLinkTypeCode>")).to be_truthy
 
     mf.media_file_link = "http://www.google.com"
-    mf.to_xml.to_s.include?("<MediaFileLink>http://www.google.com</MediaFileLink>").should be_true
+    expect(mf.to_xml.to_s.include?("<MediaFileLink>http://www.google.com</MediaFileLink>")).to be_truthy
   end
 
 end

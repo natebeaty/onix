@@ -10,24 +10,24 @@ describe ONIX::OtherText do
 
   it "should correctly convert to a string" do
     ot = ONIX::OtherText.from_xml(@root.to_s)
-    ot.to_xml.to_s[0,11].should eql("<OtherText>")
+    expect(ot.to_xml.to_s[0,11]).to eql("<OtherText>")
   end
 
   it "should provide read access to first level attributes" do
     ot = ONIX::OtherText.from_xml(@root.to_s)
 
-    ot.text_type_code.should eql(2)
-    ot.text[0,7].should eql("A woman")
+    expect(ot.text_type_code).to eql(2)
+    expect(ot.text[0,7]).to eql("A woman")
   end
 
   it "should provide write access to first level attributes" do
     ot = ONIX::OtherText.new
 
     ot.text_type_code = 2
-    ot.to_xml.to_s.include?("<TextTypeCode>02</TextTypeCode>").should be_true
+    expect(ot.to_xml.to_s.include?("<TextTypeCode>02</TextTypeCode>")).to be_truthy
 
     ot.text = "James Healy"
-    ot.to_xml.to_s.include?("<Text>James Healy</Text>").should be_true
+    expect(ot.to_xml.to_s.include?("<Text>James Healy</Text>")).to be_truthy
 
   end
 

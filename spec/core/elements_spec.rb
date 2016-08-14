@@ -28,7 +28,7 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.test_date.should eql(Date.parse("2001-01-01"))
+    expect(elem.test_date).to eql(Date.parse("2001-01-01"))
   end
 
 
@@ -40,7 +40,7 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.m_dates.size.should eql(2)
+    expect(elem.m_dates.size).to eql(2)
   end
 
 
@@ -59,8 +59,8 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.websites.size.should eql(2)
-    elem.websites[1].website_description.should eql("Web-based ebooks!")
+    expect(elem.websites.size).to eql(2)
+    expect(elem.websites[1].website_description).to eql("Web-based ebooks!")
   end
 
 
@@ -71,7 +71,7 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.countries.should eql(["AU", "NZ", "US"])
+    expect(elem.countries).to eql(["AU", "NZ", "US"])
   end
 
 
@@ -82,8 +82,8 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.update_code.should eql(1)
-    elem.update_code_code.value.should eql("Early notification")
+    expect(elem.update_code).to eql(1)
+    expect(elem.update_code_code.value).to eql("Early notification")
   end
 
 
@@ -95,8 +95,8 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.identifiers.should eql([4, 22])
-    elem.identifiers_codes.collect { |c| c.value }.should eql(["UPC", "URN"])
+    expect(elem.identifiers).to eql([4, 22])
+    expect(elem.identifiers_codes.collect { |c| c.value }).to eql(["UPC", "URN"])
   end
 
 
@@ -107,7 +107,7 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.identifiers_codes.first.value.should be_nil
+    expect(elem.identifiers_codes.first.value).to be_nil
   end
 
 
@@ -119,7 +119,7 @@ describe ONIX::Element, "custom accessors" do
       </TestElement>
     `
     elem = ONIX::TestElement.from_xml(xml)
-    elem.lax_identifier_code.value.should eql(inv)
+    expect(elem.lax_identifier_code.value).to eql(inv)
   end
 
 
@@ -129,15 +129,15 @@ describe ONIX::Element, "custom accessors" do
         <StrictIdentifier>This is not a valid code in the list</StrictIdentifier>
       </TestElement>
     `
-    lambda { ONIX::TestElement.from_xml(xml) }.should raise_error
+    expect { ONIX::TestElement.from_xml(xml) }.to raise_error
   end
 
 
   it "should recognise boolean flags" do
     xml = "<TestElement><NoDice /></TestElement>"
     elem = ONIX::TestElement.from_xml(xml)
-    elem.no_dice.should be_true
-    elem.no_cigar.should be_false
+    expect(elem.no_dice).to be_truthy
+    expect(elem.no_cigar).to be_falsey
   end
 
 
@@ -157,8 +157,8 @@ describe ONIX::Element, "custom accessors" do
       </TestElementA>
     `
     elem = ONIX::TestElementA.from_xml(xml)
-    elem.ccs_codes.collect(&:key).should eql(["AU","UA","NL","NZ"])
-    elem.dds_codes.collect(&:value).should eql(["Chad","Togo","Tonga"])
+    expect(elem.ccs_codes.collect(&:key)).to eql(["AU","UA","NL","NZ"])
+    expect(elem.dds_codes.collect(&:value)).to eql(["Chad","Togo","Tonga"])
   end
 
 
@@ -178,8 +178,8 @@ describe ONIX::Element, "custom accessors" do
     `
     elem = ONIX::TestElement.from_xml(xml)
     website = elem.fetch(:websites, :website_role, 1)
-    website.should_not be_nil
-    website.website_link.should eql("http://www.rainbowbooks.com.au")
+    expect(website).not_to be_nil
+    expect(website.website_link).to eql("http://www.rainbowbooks.com.au")
   end
 
   it "should fetch a composite array with attribute values matching query" do
@@ -198,8 +198,8 @@ describe ONIX::Element, "custom accessors" do
     `
     elem = ONIX::TestElement.from_xml(xml)
     websites = elem.fetch_all(:websites, :website_role, 1)
-    websites.should_not be_empty
-    websites.collect { |ws| ws.website_link }.should eql([
+    expect(websites).not_to be_empty
+    expect(websites.collect { |ws| ws.website_link }).to eql([
       "http://www.rainbowbooks.com.au",
       "http://booki.sh"
     ])
@@ -221,9 +221,9 @@ describe ONIX::Element, "custom accessors" do
     `
     elem = ONIX::TestElement.from_xml(xml)
     websites1 = elem.fetch_all(:websites, :website_role, 1)
-    websites1.size.should eql(1)
+    expect(websites1.size).to eql(1)
     websites2 = elem.fetch_all(:websites, :website_role, [1,2])
-    websites2.size.should eql(2)
+    expect(websites2.size).to eql(2)
   end
 
 end

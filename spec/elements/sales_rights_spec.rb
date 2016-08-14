@@ -12,31 +12,31 @@ describe ONIX::SalesRights do
 
   it "should correctly convert to a string" do
     rep = ONIX::SalesRights.from_xml(@first_right.to_s)
-    rep.should produce_the_tag("<SalesRights>")
+    expect(rep).to produce_the_tag("<SalesRights>")
   end
 
 
   it "should provide read access to first level attributes" do
     p = ONIX::Product.from_xml(@root.to_s)
-    p.sales_rights[0].sales_rights_type.should eql(1)
-    p.sales_rights[1].rights_countries.should eql(["AU", "NZ"])
+    expect(p.sales_rights[0].sales_rights_type).to eql(1)
+    expect(p.sales_rights[1].rights_countries).to eql(["AU", "NZ"])
   end
 
 
   it "should provide write access to first level attributes" do
     sr = ONIX::SalesRights.new
     sr.sales_rights_type = 2
-    sr.should include_the_xml("<SalesRightsType>02</SalesRightsType>")
+    expect(sr).to include_the_xml("<SalesRightsType>02</SalesRightsType>")
     sr.rights_countries = ["AU", "NZ"]
-    sr.should include_the_xml("<RightsCountry>AU</RightsCountry>")
-    sr.should include_the_xml("<RightsCountry>NZ</RightsCountry>")
+    expect(sr).to include_the_xml("<RightsCountry>AU</RightsCountry>")
+    expect(sr).to include_the_xml("<RightsCountry>NZ</RightsCountry>")
     sr.rights_territories = ["ECZ", "ROW"]
-    sr.should include_the_xml("<RightsTerritory>ECZ ROW</RightsTerritory>")
+    expect(sr).to include_the_xml("<RightsTerritory>ECZ ROW</RightsTerritory>")
   end
 
   it "should provide an array for deprecated rights regions" do
     p = ONIX::Product.from_xml(@root.to_s)
-    p.sales_rights[2].rights_region.should eql([0,1,2,3])
+    expect(p.sales_rights[2].rights_region).to eql([0,1,2,3])
   end
 
 end

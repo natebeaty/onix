@@ -10,24 +10,24 @@ describe ONIX::MarketRepresentation do
 
   it "should correctly convert to a string" do
     rep = ONIX::MarketRepresentation.from_xml(@root.to_s)
-    rep.to_xml.to_s[0,22].should eql("<MarketRepresentation>")
+    expect(rep.to_xml.to_s[0,22]).to eql("<MarketRepresentation>")
   end
 
   it "should provide read access to first level attributes" do
     rep = ONIX::MarketRepresentation.from_xml(@root.to_s)
 
-    rep.agent_name.should eql("Allen & Unwin")
-    rep.agent_role.should eql(7)
+    expect(rep.agent_name).to eql("Allen & Unwin")
+    expect(rep.agent_role).to eql(7)
   end
 
   it "should provide write access to first level attributes" do
     rep = ONIX::MarketRepresentation.new
 
     rep.agent_name = "Rainbow Book Agencies"
-    rep.to_xml.to_s.include?("<AgentName>Rainbow Book Agencies</AgentName>").should be_true
+    expect(rep.to_xml.to_s.include?("<AgentName>Rainbow Book Agencies</AgentName>")).to be_truthy
 
     rep.agent_role = 3
-    rep.to_xml.to_s.include?("<AgentRole>03</AgentRole>").should be_true
+    expect(rep.to_xml.to_s.include?("<AgentRole>03</AgentRole>")).to be_truthy
 
   end
 

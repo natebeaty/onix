@@ -10,20 +10,20 @@ describe ONIX::Series do
 
   it "should correctly convert to a string" do
     series = ONIX::Series.from_xml(@root.to_s)
-    series.to_xml.to_s[0,8].should eql("<Series>")
+    expect(series.to_xml.to_s[0,8]).to eql("<Series>")
   end
 
   it "should provide read access to first level attributes" do
     series = ONIX::Series.from_xml(@root.to_s)
 
-    series.title_of_series.should eql("Citizens and Their Governments")
+    expect(series.title_of_series).to eql("Citizens and Their Governments")
   end
 
   it "should provide write access to first level attributes" do
     series = ONIX::Series.new
 
     series.title_of_series = "Cool Science Careers"
-    series.to_xml.to_s.include?("<TitleOfSeries>Cool Science Careers</TitleOfSeries>").should be_true
+    expect(series.to_xml.to_s.include?("<TitleOfSeries>Cool Science Careers</TitleOfSeries>")).to be_truthy
   end
 
 end

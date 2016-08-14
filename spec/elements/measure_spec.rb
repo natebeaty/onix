@@ -10,28 +10,28 @@ describe ONIX::Measure do
 
   it "should correctly convert to a string" do
     m = ONIX::Measure.from_xml(@root.to_s)
-    m.to_xml.to_s[0,9].should eql("<Measure>")
+    expect(m.to_xml.to_s[0,9]).to eql("<Measure>")
   end
 
   it "should provide read access to first level attributes" do
     m = ONIX::Measure.from_xml(@root.to_s)
 
-    m.measure_type_code.should eql(1)
-    m.measurement.should eql(210)
-    m.measure_unit_code.should eql("mm")
+    expect(m.measure_type_code).to eql(1)
+    expect(m.measurement).to eql(210)
+    expect(m.measure_unit_code).to eql("mm")
   end
 
   it "should provide write access to first level attributes" do
     m = ONIX::Measure.new
 
     m.measure_type_code = 1
-    m.to_xml.to_s.include?("<MeasureTypeCode>01</MeasureTypeCode>").should be_true
+    expect(m.to_xml.to_s.include?("<MeasureTypeCode>01</MeasureTypeCode>")).to be_truthy
 
     m.measurement = 300
-    m.to_xml.to_s.include?("<Measurement>300</Measurement>").should be_true
+    expect(m.to_xml.to_s.include?("<Measurement>300</Measurement>")).to be_truthy
 
     m.measure_unit_code = "mm"
-    m.to_xml.to_s.include?("<MeasureUnitCode>mm</MeasureUnitCode>").should be_true
+    expect(m.to_xml.to_s.include?("<MeasureUnitCode>mm</MeasureUnitCode>")).to be_truthy
   end
 
 end

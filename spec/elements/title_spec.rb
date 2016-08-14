@@ -10,27 +10,27 @@ describe ONIX::Title do
 
   it "should correctly convert to a string" do
     t = ONIX::Title.from_xml(@root.to_s)
-    t.to_xml.to_s[0,7].should eql("<Title>")
+    expect(t.to_xml.to_s[0,7]).to eql("<Title>")
   end
 
   it "should provide read access to first level attributes" do
     t = ONIX::Title.from_xml(@root.to_s)
-    t.title_type.should eql(1)
-    t.title_text.should eql("Good Grief")
-    t.subtitle.should   eql("A Constructive Approach to the Problem of Loss")
+    expect(t.title_type).to eql(1)
+    expect(t.title_text).to eql("Good Grief")
+    expect(t.subtitle).to   eql("A Constructive Approach to the Problem of Loss")
   end
 
   it "should provide write access to first level attributes" do
     t = ONIX::Title.new
 
     t.title_type = 1
-    t.to_xml.to_s.include?("<TitleType>01</TitleType>").should be_true
+    expect(t.to_xml.to_s.include?("<TitleType>01</TitleType>")).to be_truthy
 
     t.title_text = "Good Grief"
-    t.to_xml.to_s.include?("<TitleText>Good Grief</TitleText>").should be_true
+    expect(t.to_xml.to_s.include?("<TitleText>Good Grief</TitleText>")).to be_truthy
 
     t.subtitle = "Blah"
-    t.to_xml.to_s.include?("<Subtitle>Blah</Subtitle>").should be_true
+    expect(t.to_xml.to_s.include?("<Subtitle>Blah</Subtitle>")).to be_truthy
 
   end
 

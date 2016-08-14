@@ -14,42 +14,42 @@ describe "ONIX::APAProduct" do
     @product = ONIX::Product.from_xml(@product_node.to_s)
     @apa     = ONIX::APAProduct.new(@product)
 
-    @apa.record_reference.should eql("365-9780194351898")
-    @apa.notification_type.should eql(3)
-    @apa.product_form.should eql("BC")
-    @apa.number_of_pages.should eql(100)
-    @apa.bic_main_subject.should eql("EB")
-    @apa.publishing_status.should eql(4)
-    @apa.publication_date.should eql(Date.civil(1998,9,1))
-    @apa.pack_quantity.should eql(12)
+    expect(@apa.record_reference).to eql("365-9780194351898")
+    expect(@apa.notification_type).to eql(3)
+    expect(@apa.product_form).to eql("BC")
+    expect(@apa.number_of_pages).to eql(100)
+    expect(@apa.bic_main_subject).to eql("EB")
+    expect(@apa.publishing_status).to eql(4)
+    expect(@apa.publication_date).to eql(Date.civil(1998,9,1))
+    expect(@apa.pack_quantity).to eql(12)
   end
 
   it "should provide write access to attributes" do
     apa = ONIX::APAProduct.new
 
     apa.notification_type = 3
-    apa.to_xml.to_s.include?("<NotificationType>03</NotificationType>").should be_true
+    expect(apa.to_xml.to_s.include?("<NotificationType>03</NotificationType>")).to be_truthy
 
     apa.record_reference = "365-9780194351898"
-    apa.to_xml.to_s.include?("<RecordReference>365-9780194351898</RecordReference>").should be_true
+    expect(apa.to_xml.to_s.include?("<RecordReference>365-9780194351898</RecordReference>")).to be_truthy
 
     apa.product_form = "BC"
-    apa.to_xml.to_s.include?("<ProductForm>BC</ProductForm>").should be_true
+    expect(apa.to_xml.to_s.include?("<ProductForm>BC</ProductForm>")).to be_truthy
 
     apa.number_of_pages = 100
-    apa.to_xml.to_s.include?("<NumberOfPages>100</NumberOfPages>").should be_true
+    expect(apa.to_xml.to_s.include?("<NumberOfPages>100</NumberOfPages>")).to be_truthy
 
     apa.bic_main_subject = "EB"
-    apa.to_xml.to_s.include?("<BICMainSubject>EB</BICMainSubject>").should be_true
+    expect(apa.to_xml.to_s.include?("<BICMainSubject>EB</BICMainSubject>")).to be_truthy
 
     apa.publishing_status = 4
-    apa.to_xml.to_s.include?("<PublishingStatus>04</PublishingStatus>").should be_true
+    expect(apa.to_xml.to_s.include?("<PublishingStatus>04</PublishingStatus>")).to be_truthy
 
     apa.publication_date = Date.civil(1998,9,1)
-    apa.to_xml.to_s.include?("<PublicationDate>19980901</PublicationDate>").should be_true
+    expect(apa.to_xml.to_s.include?("<PublicationDate>19980901</PublicationDate>")).to be_truthy
 
     apa.pack_quantity = 12
-    apa.to_xml.to_s.include?("<PackQuantity>12</PackQuantity>").should be_true
+    expect(apa.to_xml.to_s.include?("<PackQuantity>12</PackQuantity>")).to be_truthy
   end
 
 end
@@ -59,8 +59,8 @@ describe ONIX::APAProduct, "series method" do
     apa = ONIX::APAProduct.new
 
     apa.series = "Harry Potter"
-    apa.series.should eql("Harry Potter")
-    apa.to_xml.to_s.include?("<TitleOfSeries>Harry Potter</TitleOfSeries>").should be_true
+    expect(apa.series).to eql("Harry Potter")
+    expect(apa.to_xml.to_s.include?("<TitleOfSeries>Harry Potter</TitleOfSeries>")).to be_truthy
   end
 end
 
@@ -74,7 +74,7 @@ describe ONIX::APAProduct, "price method" do
     @product = ONIX::Product.from_xml(@product_node.to_s)
     @apa     = ONIX::APAProduct.new(@product)
 
-    @apa.price.should eql(BigDecimal.new("99.95"))
+    expect(@apa.price).to eql(BigDecimal.new("99.95"))
   end
 end
 
@@ -88,6 +88,6 @@ describe ONIX::APAProduct, "rrp_exc_sales_tax method" do
     @product = ONIX::Product.from_xml(@product_node.to_s)
     @apa     = ONIX::APAProduct.new(@product)
 
-    @apa.rrp_exc_sales_tax.should eql(BigDecimal.new("99.95"))
+    expect(@apa.rrp_exc_sales_tax).to eql(BigDecimal.new("99.95"))
   end
 end

@@ -16,10 +16,10 @@ describe ONIX::Normaliser, "with a simple short tag file" do
   it "should correctly convert short tag file to reference tag" do
     ONIX::Normaliser.process(@filename, @outfile)
 
-    File.file?(@outfile).should be_true
+    expect(File.file?(@outfile)).to be_truthy
     content = File.read(@outfile)
-    content.include?("<m174>").should be_false
-    content.include?("<FromCompany>").should be_true
+    expect(content.include?("<m174>")).to be_falsey
+    expect(content.include?("<FromCompany>")).to be_truthy
   end
 end
 
@@ -37,11 +37,11 @@ describe ONIX::Normaliser, "with a short tag file that include HTML tags" do
   it "should correctly convert short tag file to reference tag" do
     ONIX::Normaliser.process(@filename, @outfile)
 
-    File.file?(@outfile).should be_true
+    expect(File.file?(@outfile)).to be_truthy
     content = File.read(@outfile)
-    content.include?("<m174>").should be_false
-    content.include?("<FromCompany>").should be_true
-    content.include?("<em>Discipleship Essentials</em>").should be_true
+    expect(content.include?("<m174>")).to be_falsey
+    expect(content.include?("<FromCompany>")).to be_truthy
+    expect(content.include?("<em>Discipleship Essentials</em>")).to be_truthy
   end
 
 end
@@ -60,9 +60,9 @@ describe ONIX::Normaliser, "with a utf8 file that has illegal control chars" do
   it "should remove all control chars except LF, CR and TAB" do
     ONIX::Normaliser.process(@filename, @outfile)
 
-    File.file?(@outfile).should be_true
+    expect(File.file?(@outfile)).to be_truthy
     content = File.read(@outfile)
 
-    content.include?("<TitleText>OXFORDPICTURE DICTIONARY CHINESE</TitleText>").should be_true
+    expect(content.include?("<TitleText>OXFORDPICTURE DICTIONARY CHINESE</TitleText>")).to be_truthy
   end
 end

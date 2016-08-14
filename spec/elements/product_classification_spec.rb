@@ -11,27 +11,27 @@ describe ONIX::ProductClassification do
   it "should correctly convert to a string" do
     a = ONIX::ProductClassification.from_xml(@root.to_s)
     tag = "<ProductClassification>"
-    a.to_xml.to_s[0, tag.length].should eql(tag)
+    expect(a.to_xml.to_s[0, tag.length]).to eql(tag)
   end
 
   it "should provide read access to first level attributes" do
     a = ONIX::ProductClassification.from_xml(@root.to_s)
-    a.product_classification_type.should eql(2)
-    a.product_classification_code.should eql("55101514")
-    a.percent.should eql(66.67)
+    expect(a.product_classification_type).to eql(2)
+    expect(a.product_classification_code).to eql("55101514")
+    expect(a.percent).to eql(66.67)
   end
 
   it "should provide write access to first level attributes" do
     a = ONIX::ProductClassification.new
 
     a.product_classification_type = 3
-    a.to_xml.to_s.include?("<ProductClassificationType>03</ProductClassificationType>").should be_true
+    expect(a.to_xml.to_s.include?("<ProductClassificationType>03</ProductClassificationType>")).to be_truthy
 
     a.product_classification_code = "DATA"
-    a.to_xml.to_s.include?("<ProductClassificationCode>DATA</ProductClassificationCode>").should be_true
+    expect(a.to_xml.to_s.include?("<ProductClassificationCode>DATA</ProductClassificationCode>")).to be_truthy
 
     a.percent = 50
-    a.to_xml.to_s.include?("<Percent>50</Percent>").should be_true
+    expect(a.to_xml.to_s.include?("<Percent>50</Percent>")).to be_truthy
   end
 
 end
