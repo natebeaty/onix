@@ -5,6 +5,7 @@ require "onix/version"
 Gem::Specification.new do |s|
   s.name              = "onix"
   s.version           = ONIX::VERSION
+  s.licenses          = ['MIT']
   s.summary           = "A convenient mapping between Ruby objects and the " +
                         "ONIX 2.1 XML specification"
   s.description       = "ONIX is the standard XML format for electronic data " +
