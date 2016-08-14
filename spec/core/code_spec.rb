@@ -5,7 +5,7 @@ require 'spec_helper.rb'
 describe ONIX::Code, "instantiation" do
 
   it "should raise an error for an invalid codelist number" do
-    expect { ONIX::Code.new(500, 1) }.to raise_error
+    expect { ONIX::Code.new(500, 1) }.to raise_error(LoadError)
   end
 
   it "should find the codelist from a valid number" do

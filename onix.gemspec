@@ -27,5 +27,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
-  s.add_development_dependency('rspec', '~> 2.99.0')
+  s.add_development_dependency('rspec', '~> 3.0')
 end

@@ -62,11 +62,11 @@ RSpec::Matchers.define(:include_the_xml) do |expected|
     actual.to_xml.to_s.include?(expected)
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "expected '#{actual.to_xml.to_s}' to include the xml '#{expected}'"
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected '#{actual.to_xml.to_s}' not to include the xml '#{expected}'"
   end
 end

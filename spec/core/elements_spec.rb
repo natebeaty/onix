@@ -129,7 +129,7 @@ describe ONIX::Element, "custom accessors" do
         <StrictIdentifier>This is not a valid code in the list</StrictIdentifier>
       </TestElement>
     `
-    expect { ONIX::TestElement.from_xml(xml) }.to raise_error
+    expect { ONIX::TestElement.from_xml(xml) }.to raise_error(RuntimeError)
   end
 
 
