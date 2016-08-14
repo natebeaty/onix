@@ -6,5 +6,5 @@ addons:
     packages:
     - xsltproc
 before_install:
-  - sudo mkdir -p /usr/local/etc/xml/catalog && git clone git://github.com/yob/onix-dtd.git /usr/local/etc/xml/catalog/onix && export XML_CATALOG_FILES="/usr/local/etc/xml/catalog/onix/catalog.xml $XML_CATALOG_FILES"
+  - cd $HOME && git clone git://github.com/yob/onix-dtd.git && export XML_CATALOG_FILES="$HOME/onix-dtd/catalog.xml $XML_CATALOG_FILES"
 script: bundle exec rspec
