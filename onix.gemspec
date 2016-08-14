@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.rdoc_options     << "--title" << "ONIX - Working with the ONIX XML spec" <<
                         "--line-numbers"
   s.test_files        = Dir.glob("spec/**/*.rb")
-  s.files             = Dir.glob("{lib,support,dtd}/**/**/*") + ["README.markdown", "TODO", "CHANGELOG"]
+  s.files             = Dir.glob("{lib,support,dtd}/**/**/*") + ["README.markdown", "CHANGELOG"]
 
   s.add_dependency('roxml', '~>3.3')
   s.add_dependency('activesupport', '~> 3.2')
