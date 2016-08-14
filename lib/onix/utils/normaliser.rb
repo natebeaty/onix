@@ -7,7 +7,7 @@ module ONIX
 
   # A standalone class that can be used to normalise ONIX files
   # into a standardised form. If you're accepting ONIX files from a wide range
-  # of suppliers, you're guarunteed to get all sorts of dialects.
+  # of suppliers, you're guaranteed to get all sorts of dialects.
   #
   # This will create a new file that:
   #
