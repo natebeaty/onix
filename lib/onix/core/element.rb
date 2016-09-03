@@ -44,6 +44,31 @@ module ONIX
       xml_accessor(name, options, &prep)
     end
 
+    # An accessor that treats the input/output as a string.
+    #
+    # Options: none yet.
+    #
+    def self.onix_string_accessor(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
+      options = options.merge(
+        :from => tag_name
+      )
+      xml_accessor(name, options)
+    end
+
+    # An accessor that treats the input/output as an integer.
+    #
+    # Options: none yet.
+    #
+    def self.onix_integer_accessor(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
+      options = options.merge(
+        :from => tag_name,
+        :as => Fixnum
+      )
+      xml_accessor(name, options)
+    end
+
     # An accessor that treats the input/output as a decimal.
     #
     # Options: none yet.

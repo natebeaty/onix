@@ -7,6 +7,8 @@ describe ONIX::Element, "custom accessors" do
   before(:all) do
     class ONIX::TestElement < ONIX::Element
       xml_name "TestElement"
+      onix_string_accessor :test_string
+      onix_integer_accessor :test_integer
       onix_date_accessor(:test_date, "TestDate")
       onix_date_accessor(:m_dates, "MDate", :as => [Date])
       onix_composite(:websites, ONIX::Website)
@@ -20,6 +22,25 @@ describe ONIX::Element, "custom accessors" do
     end
   end
 
+  it 'should load string' do
+    xml = %Q`
+      <TestElement>
+        <TestString>howdy!</TestString>
+      </TestElement>
+    `
+    elem = ONIX::TestElement.from_xml(xml)
+    expect(elem.test_string).to eql('howdy!')
+  end
+
+  it 'should load integer' do
+    xml = %Q`
+      <TestElement>
+        <TestInteger>09</TestInteger>
+      </TestElement>
+    `
+    elem = ONIX::TestElement.from_xml(xml)
+    expect(elem.test_integer).to eql(9)
+  end
 
   it "should load dates" do
     xml = %Q`
@@ -31,7 +52,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.test_date).to eql(Date.parse("2001-01-01"))
   end
 
-
   it "should load multiple test dates correctly" do
     xml = %Q`
       <TestElement>
@@ -42,7 +62,6 @@ describe ONIX::Element, "custom accessors" do
     elem = ONIX::TestElement.from_xml(xml)
     expect(elem.m_dates.size).to eql(2)
   end
-
 
   it "should load composites" do
     xml = %Q`
@@ -63,7 +82,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.websites[1].website_description).to eql("Web-based ebooks!")
   end
 
-
   it "should load space-separated lists" do
     xml = %Q`
       <TestElement>
@@ -73,7 +91,6 @@ describe ONIX::Element, "custom accessors" do
     elem = ONIX::TestElement.from_xml(xml)
     expect(elem.countries).to eql(["AU", "NZ", "US"])
   end
-
 
   it "should load a code from a list" do
     xml = %Q`
@@ -85,7 +102,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.update_code).to eql(1)
     expect(elem.update_code_code.value).to eql("Early notification")
   end
-
 
   it "should load multiple codes from a list into an array" do
     xml = %Q`
@@ -99,7 +115,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.identifiers_codes.collect { |c| c.value }).to eql(["UPC", "URN"])
   end
 
-
   it "should nil invalid values from a list by default" do
     xml = %Q`
       <TestElement>
@@ -109,7 +124,6 @@ describe ONIX::Element, "custom accessors" do
     elem = ONIX::TestElement.from_xml(xml)
     expect(elem.identifiers_codes.first.value).to be_nil
   end
-
 
   it "should permit invalid values from a list if enforce option false" do
     inv = "This is not a valid code in the list"
@@ -122,7 +136,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.lax_identifier_code.value).to eql(inv)
   end
 
-
   it "should raise invalid values from a list if enforce option true" do
     xml = %Q`
       <TestElement>
@@ -132,14 +145,12 @@ describe ONIX::Element, "custom accessors" do
     expect { ONIX::TestElement.from_xml(xml) }.to raise_error(RuntimeError)
   end
 
-
   it "should recognise boolean flags" do
     xml = "<TestElement><NoDice /></TestElement>"
     elem = ONIX::TestElement.from_xml(xml)
     expect(elem.no_dice).to be_truthy
     expect(elem.no_cigar).to be_falsey
   end
-
 
   it "should process code values through a block first if given" do
     class ONIX::TestElementA < ONIX::Element
@@ -160,7 +171,6 @@ describe ONIX::Element, "custom accessors" do
     expect(elem.ccs_codes.collect(&:key)).to eql(["AU","UA","NL","NZ"])
     expect(elem.dds_codes.collect(&:value)).to eql(["Chad","Togo","Tonga"])
   end
-
 
   it "should fetch a single composite with an attribute value matching query" do
     xml = %Q`
