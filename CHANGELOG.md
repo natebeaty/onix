@@ -1,49 +1,70 @@
-v0.10.0 (13th August 2016)
+# Change Log
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/) 
+and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## [0.10.0] - 2016-08-13
+### Changed
 - Merge joseph-refactor branch into master. This is a significant,
   opinionated change to the structure of the original gem.
 
-v0.9.1 (5th September 2011)
-- relax activesupport dependency to work with rails 3 or 3.1
+## [0.9.1] - 2011-09-05
+### Changed
+- Relax activesupport dependency to work with rails 3 or 3.1
 
-v0.9.0 (14th April 2011)
-- switch back to the vanilla roxml gem. Ben is maintaining it again and
-  he has merged in my bug fixes
-- clarify comments explaining encoding behaviour
-- Add options hash to ONIX::Reader. Only option at this stage is :encoding,
+## [0.9.0] - 2011-04-14
+### Added
+- Options hash to ONIX::Reader. Only option at this stage is :encoding,
   which allows the user to override the assumed encoding of the input XML
+
+### Changed
+- Switch back to the vanilla roxml gem. Ben is maintaining it again and
+  he has merged in my bug fixes
+- Clarify comments explaining encoding behaviour
 - API change, so new minor version
 
-v0.8.5 (21st December 2010)
-- update packaging - use bundler and rspec 2.x
-- support normalising short tag files that include HTML tags
+## [0.8.5] - 2010-12-21
+### Changed
+- Update packaging - use bundler and rspec 2.x
+- Support normalising short tag files that include HTML tags
 
-v0.8.4 (18th October 2010)
-- some small fixes to xml names from Tim
-- make all code lists available via the ONIX::Lists class
+## [0.8.4] - 2010-10-18
+### Changed
+- Some small fixes to xml names from Tim
+- Make all code lists available via the ONIX::Lists class
 
-v0.8.3 (9th September 2010)
+## [0.8.3] - 2010-09-09
+### Changed
 - Fix for race condition in ONIX::Normaliser
   - thanks to pixelvixen for reporting
-- force roxml to be 3.1.6 or higher. Earlier versions misbehaved when monkey
+- Force roxml to be 3.1.6 or higher. Earlier versions misbehaved when monkey
   patching nokogiri
 
-v0.8.2 (6th May 2010)
-- fix APAProduct#series and APAProduct#series=
+## [0.8.2] - 2010-05-06
+### Changed
+- Fix APAProduct#series and APAProduct#series=
 
-v0.8.1 (5th January 2010)
-- Use nokogiri's support for transparent entity conversion when reading an ONIX file
-- Removed entity replacement from ONIX::Normaliser
-  - the external dependency on sed made me uncomfortable, and it wasn't really
-    necessary now that nokogiri can do it for us
-- Removed utf-8 normalisation from ONIX::Normaliser
-  - nokogiri also handles this really cleanly and transparently. Regardless of
-    the source file encoding, Nokogiri::Reader returns utf-8 encoded data
-- Add the release attribute to files we generate
+## [0.8.1] - 2010-01-05
+### Added
+- The release attribute to files we generate
   - it's optional in 2.1, but mandatory in 3.0. As we start to see 3.0 files in the
     wild it will help to have a rapid way to distinguish between them
-- Add ONIX::Reader#release - to detect the release version of files we read in
+- ONIX::Reader#release - to detect the release version of files we read in
 
-v0.8.0 (31st October 2009)
+### Changed
+- Use nokogiri's support for transparent entity conversion when reading an ONIX file
+
+### Removed
+- Entity replacement from ONIX::Normaliser
+  - the external dependency on sed made me uncomfortable, and it wasn't really
+    necessary now that nokogiri can do it for us
+- UTF-8 normalisation from ONIX::Normaliser
+  - nokogiri also handles this really cleanly and transparently. Regardless of
+    the source file encoding, Nokogiri::Reader returns utf-8 encoded data
+
+## [0.8.0] - 2009-10-31
+### Changed
 - Replace LibXML dependency with Nokogiri. Nokogiri is under active development, has
   a responsive maintainer and is significantly more stable
 - Switch to ROXML 3.x
@@ -53,41 +74,50 @@ v0.8.0 (31st October 2009)
 - Ensure APAProduct#price returns the first product price and ignores
   the price type
 
-v0.7.8 (19th October 2009)
-- add support for additional elements (mostly series and audience related)
+## [0.7.8] - 2009-10-19
+### Added
+- Support for additional elements (mostly series and audience related)
   - thanks tim
 
-v0.7.7 (1st October 2009)
-- optimise sed usage in ONIX::Normaliser. *huge* speed improvement on
+## [0.7.7] - 2009-10-01
+### Changed
+- Optimise sed usage in ONIX::Normaliser. *huge* speed improvement on
   large files.
 
-v0.7.6 (21st September 2009)
-- provide access to the PackQuantity element
+## [0.7.6] - 2009-09-21
+### Changed
+- Provide access to the PackQuantity element
 
-v0.7.5 (8th September 2009)
+## [0.7.5] - 2009-09-08
+### Changed
 - Don't raise an exception on malformed dates when reading files
 
-v0.7.4 (2nd September 2009)
+## [0.7.4] - 2009-09-02
+### Changed
 - Expand ONIX::Normaliser
   - strip control chars
   - add encoding declaration to valid utf-8 files that aren't declared
     as such
 
-v0.7.3 (19th August 2009)
+## [0.7.3] - 2009-08-19
+### Changed
 - Switch from java to xsltproc to convert short tag ONIX files
   to reference tags
 
-v0.7.2 (19th August 2009)
-- Added ONIX::Normaliser class
+## [0.7.2] - 2009-08-19
+### Added
+- ONIX::Normaliser class
   - for normalising various ONIX files into a form that makes them easy
     to process. Shouldn't be necesary to pre-process files like this, but
     I'm sick of trying to wrestle the libxml ruby bindings
 
-v0.7.1 (24th June 2009)
+## [0.7.1] - 2009-06-24
+### Changed
 - Small tweak to ordering of elements in the Product group
 
-v0.7.0 (17th June 2009)
-- try using LibXML for reader again
+## [0.7.0] - 2009-06-17
+### Changed
+- Try using LibXML for reader again
   - retrieving the ONIX version of the input file is currently disabled, as
     that seems to be the source of our instability
 - Various Ruby 1.9 compatability tweaks
@@ -96,25 +126,32 @@ v0.7.0 (17th June 2009)
   - the ROXML based objects seem to forget the encoding when they're marshalled,
     so force string based attributes *back* to UTF-8
 
-v0.6.7 (Unreleased)
-- add some accessors to the Title composite
+## [0.6.7] - Unreleased
+### Added
+- Some accessors to the Title composite
 
-v0.6.6 (Unreleased)
+## [0.6.6] - Unreleased
+### Changed
 - Forget the S on an element name
 
-v0.6.5 (Unreleased)
+## [0.6.5] - Unreleased
+### Changed
 - Ruby 1.9 compat
 
-v0.6.4 (Unreleased)
-- Add APAProduct#price
+## [0.6.4] - Unreleased
+### Added
+- APAProduct#price
 
-v0.6.3(Unreleased)
+## [0.6.3] - Unreleased
+### Changed
 - Bump ROXML dependency to 2.5.3 to get libxml-ruby 1.1.3 compatibility
 
-v0.6.2 (Unreleased)
+## [0.6.2] - Unreleased
+### Changed
 - Fix a small typo in APAProduct
 
-v0.6.1 (Unreleased)
+## [0.6.1] - Unreleased
+### Changed
 - Stopped using LibXMLs Reader class as the basis for our reader.
   - We were getting too many segfaults (even 1 is too many!)
   - until we resolve it, reverted to manual string parsing
@@ -125,71 +162,94 @@ v0.6.1 (Unreleased)
   - Hopefully only a short term fix, until I work out what is going on with
     libxml
 
-v0.6.0 (18th March 2009)
-- remove use of threads in ONIX::Reader
+## [0.6.0] - 2009-03-18
+### Changed
+- Bump required ROXML version to 2.5.2
+
+### Removed
+- Use of threads in ONIX::Reader
   - a producer/consumer pattern was useful in the REXML stream parsing days, but
     now LibXML's Reader binding provides a better alternative
   - API left unchanged, this was all under the hood
-- bump required ROXML version to 2.5.2
 
-v0.5.1 (4th March 2009)
+## [0.5.1] - 2009-03-04
+### Changed
 - Fix a single letter typo
 
-v0.5 (2nd March 2009)
+## [0.5.0] - 2009-03-02
+### Changed
 - Switch ROXML dependency from a patched version to vanilla
   - Vanilla ROXML now has all the features we need
   - This change should be transparent to ONIX gem users
 
-v0.4.7 (9th December 2008)
+## [0.4.7] - 2008-12-09
+### Changed
 - Contributor sub elements should match the order specified in the DTD
 
-v0.4.6 (2nd December 2008)
-- 2 new accessors on the contributor class - bio and corporate name
+## [0.4.6] - 2008-12-02
+### Changed
+- Two new accessors on the contributor class - bio and corporate name
 
-v0.4.5 (21st November 2008)
+## [0.4.5] - 2008-11-21
+### Changed
 - APAProduct wrapper should generate valid MediaFile composites
 
-v0.4.4 (19th November 2008)
-- Added support for more elements from MarketRepresentation
+## [0.4.4] - 2008-11-19
+### Added
+- Support for more elements from MarketRepresentation
 
-v0.4.3 (11th November 2008)
-- Added support for AgentName and MarketPublishingStatus
+## [0.4.3] - 2008-11-11
+### Added
+- Support for AgentName and MarketPublishingStatus
 
-v0.4.2 (1st November 2008)
-- Remove final remnants of REXML code
+## [0.4.2] - 2008-11-01
+### Changed
 - Minor reordering of elements to match DTD
 
-v0.4.1 (UNRELEASED)
-- Added accessors to various product measurements. Height, weight, etc.
+### Removed
+- Final remnants of REXML code
+
+## [0.4.1] - Unreleased
+### Added
+- Accessors to various product measurements. Height, weight, etc.
 - Reduced time for an ONIX::Reader class to initialise
 
-v0.4.0 (28th October 2008)
+## [0.4.0] - 2008-10-28
+### Changed
 - Major rework: now based on ROXML instead of xml-mapping
   - Mostly API Compatible
   - StreamReader and StreamWriter renamed to Reader and Writer
   - ROXML is based on libxml, so things should be significantly faster
 
-v0.2.7 (Unreleased)
-- Add line breaks after each product
+## [0.2.7] - Unreleased
+### Added
+- Line breaks after each product
 
-v0.2.5 (Unreleased)
+## [0.2.5] - Unreleased
+### Changed
 - Make PublishingStatus a two_digit_node
 
-v0.2.4 (Unreleased)
+## [0.2.4] - Unreleased
+### Changed
 - Initialise the media files array of a new product correctly
 
-v0.2.3 (Unreleased)
+## [0.2.3] - Unreleased
+### Changed
 - Switch a few more fields over to TwoDigitNodes
 - Make the product availability field accessible from APAProduct
 
-v0.2.2 (Unreleased)
-- Add a new nodetype (DateNode) for YYYYMMDD fields
+## [0.2.2] - Unreleased
+### Added
+- A new nodetype (DateNode) for YYYYMMDD fields
 
-v0.2.1 (Unreleased)
-- Add a new nodetype (TwoDigitNode) for two digit codes
+## [0.2.1] - Unreleased
+### Added
+- A new nodetype (TwoDigitNode) for two digit codes
 
-v0.2.0 (16th July 2008)
-- Add support for reading and storing subject codes (BIC, BISAC, etc)
+## [0.2.0] - 2008-07-16
+### Added
+- Support for reading and storing subject codes (BIC, BISAC, etc)
 
-v0.1.0 (12th June 2008)
+## [0.1.0] - 2008-06-12
+### Added
 - Initial Release
