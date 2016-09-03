@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.authors           = ["milkfarm productions"]
   s.email             = ["stuff@milkfarmproduction.com"]
   s.homepage          = "http://github.com/milkfarm/onix"
-  s.license           = 'MIT'
   s.rdoc_options     << "--title" << "ONIX - Working with the ONIX XML spec" <<
                         "--line-numbers"
   s.test_files        = Dir.glob("spec/**/*.rb")
