@@ -226,4 +226,16 @@ describe ONIX::Element, "custom accessors" do
     expect(websites2.size).to eql(2)
   end
 
+  it 'should camelize' do
+    pairs = {
+      :test_element => 'TestElement',
+      'test-element' => 'Test-element',
+      'test/element' => 'Test::Element',
+      'TEST/ELEMENT' => 'TEST::Element',
+    }
+    pairs.each do |k,v|
+      expect(ONIX::Element.send(:camelize, k)).to eql(v)
+    end
+  end
+
 end

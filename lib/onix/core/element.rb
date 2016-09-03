@@ -28,7 +28,8 @@ module ONIX
     #
     # Options: none yet.
     #
-    def self.onix_date_accessor(name, tag_name, options = {})
+    def self.onix_date_accessor(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
       options = options.merge(
         :from => tag_name,
         :to_xml => ONIX::Formatters.yyyymmdd
@@ -60,7 +61,8 @@ module ONIX
     # An accessor that treats the input as a space-separated list, and
     # creates an array for it.
     #
-    def self.onix_space_separated_list(name, tag_name, options = {})
+    def self.onix_space_separated_list(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
       options = options.merge(
         :from => tag_name,
         :to_xml => ONIX::Formatters.space_separated
@@ -74,7 +76,8 @@ module ONIX
     # something like <NoContributor /> is recognised as
     # "there is no contributor".
     #
-    def self.onix_boolean_flag(name, tag_name, options = {})
+    def self.onix_boolean_flag(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
       options = options.merge(
         :from => tag_name,
         :to_xml => ONIX::Formatters.boolean
@@ -124,7 +127,8 @@ module ONIX
     #   >> "Early notification"
     #
     #
-    def self.onix_code_from_list(name, tag_name, options = {})
+    def self.onix_code_from_list(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
       unless list_number = options.delete(:list)
         raise ONIX::CodeListNotSpecified
       end
@@ -175,7 +179,8 @@ module ONIX
     # If a block is given, each value is passed into it first - return
     # an array of the actual values.
     #
-    def self.onix_codes_from_list(name, tag_name, options = {}, &blk)
+    def self.onix_codes_from_list(name, tag_name = nil, options = {}, &blk)
+      tag_name ||= camelize(name)
       unless list_number = options.delete(:list)
         raise ONIX::CodeListNotSpecified
       end
@@ -214,7 +219,8 @@ module ONIX
     # The reader parses only the first element.
     # The writer outputs one element containing space-separated codes.
     #
-    def self.onix_spaced_codes_from_list(name, tag_name, options)
+    def self.onix_spaced_codes_from_list(name, tag_name = nil, options)
+      tag_name ||= camelize(name)
       options[:to_xml] ||= ONIX::Formatters.space_separated
       onix_codes_from_list(name, tag_name, options.merge(:as => :text)) { |v| v ? v.split : [] }
     end
@@ -225,7 +231,8 @@ module ONIX
     # The reader parses multiple elements.
     # The writer outputs one element per code.
     #
-    def self.onix_repeatable_spaced_codes_from_list(name, tag_name, options)
+    def self.onix_repeatable_spaced_codes_from_list(name, tag_name = nil, options)
+      tag_name ||= camelize(name)
       options[:to_xml] ||= [ONIX::Formatters.space_separated]
       onix_codes_from_list(name, tag_name, options) { |v| v ? v.split : [] }
     end
@@ -325,8 +332,21 @@ module ONIX
       self.class.accessor_names.inject({}) {|h,e| h[e] = send(e); h}
     end
 
-  end
+    private
 
+    # Converts the given string or symbol to CamelCase.
+    #
+    #   http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-camelize
+    #
+    def self.camelize(term)
+      string = term.to_s
+      string = string.sub(/^[a-z\d]*/) { |match| match.capitalize }
+      string.gsub!(/(?:_|(\/))([a-z\d]*)/i) { "#{$1}#{$2.capitalize}" }
+      string.gsub!('/'.freeze, '::'.freeze)
+      string
+    end
+
+  end
 
   class CodeListNotSpecified < ArgumentError
   end
