@@ -13,9 +13,10 @@ Gem::Specification.new do |s|
                         "library provides a slim layer over the format and " +
                         "simplifies both reading and writing ONIX files in " +
                         "your Ruby applications."
-  s.authors           = ["tim"]
+  s.authors           = ["milkfarm productions"]
   s.email             = ["stuff@milkfarmproduction.com"]
   s.homepage          = "http://github.com/milkfarm/onix"
+  s.license           = 'MIT'
   s.rdoc_options     << "--title" << "ONIX - Working with the ONIX XML spec" <<
                         "--line-numbers"
   s.test_files        = Dir.glob("spec/**/*.rb")
