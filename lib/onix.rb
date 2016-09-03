@@ -64,7 +64,7 @@ end
   "core/code",
 
   # identifier mappings
-  "elements/identifier",
+  "elements/identifier_base",
   "elements/sender_identifier",
   "elements/addressee_identifier",
   "elements/person_name_identifier",
