@@ -1,3 +1,4 @@
+*.gem
 .ruby-*
 pkg
 Gemfile.lock
