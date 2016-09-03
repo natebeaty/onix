@@ -43,6 +43,20 @@ module ONIX
       xml_accessor(name, options, &prep)
     end
 
+    # An accessor that treats the input/output as a decimal.
+    #
+    # Options: none yet.
+    #
+    def self.onix_decimal_accessor(name, tag_name = nil, options = {})
+      tag_name ||= camelize(name)
+      options = options.merge(
+        :from => tag_name,
+        :as => BigDecimal,
+        :to_xml => ONIX::Formatters.decimal
+      )
+      xml_accessor(name, options)
+    end
+
     # An accessor that treats the input as a space-separated list, and
     # creates an array for it.
     #
