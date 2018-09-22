@@ -19,7 +19,7 @@ class ONIX::Product < ONIX::Element
 
   # PR.3 Product Form
   onix_code_from_list :product_form, "ProductForm", :list => 7
-  onix_codes_from_list :product_form_details, "ProductFormDetail", :list => 78
+  onix_codes_from_list :product_form_detail, "ProductFormDetail", :list => 78
   onix_composite :product_form_features, ONIX::ProductFormFeature
   onix_code_from_list :product_packaging, "ProductPackaging", :list => 80
   xml_accessor :product_form_description, :from => "ProductFormDescription"

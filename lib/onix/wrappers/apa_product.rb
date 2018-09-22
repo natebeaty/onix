@@ -6,6 +6,7 @@ module ONIX
     delegate :record_reference, :record_reference=
     delegate :notification_type, :notification_type=
     delegate :product_form, :product_form=
+    delegate :product_form_detail, :product_form_detail=
     delegate :edition, :edition=
     delegate :number_of_pages, :number_of_pages=
     delegate :bic_main_subject, :bic_main_subject=
@@ -338,13 +339,13 @@ module ONIX
     # retrieve the supply country code
     def supply_country
       composite = product.supply_details.first
-      composite.nil? ? nil : composite.supply_to_country
+      composite.nil? ? nil : composite.supply_to_countries
     end
 
     # set a new supply country code
     def supply_country=(str)
       composite = find_or_create_supply_detail
-      composite.supply_to_country = str
+      composite.supply_to_countries << str
     end
 
     # retrieve the product availability code
@@ -576,6 +577,33 @@ module ONIX
         product.market_representations << reps
       end
       reps.market_publishing_status = value.to_i
+    end
+
+    # def audience_range
+    #   ranges = product.audience_ranges.first
+    #   return nil if ranges.nil?
+    #   ranges.audience_range
+    # end
+
+    def audience_range=(value)
+      range = ONIX::AudienceRange.new
+      range.audience_range_qualifier = 17
+      # if value is in format "5-12" split it into array
+      if value.match('-')
+        range.audience_range_precisions = [3,4]
+        range.audience_range_values = value.split("-").map(&:to_i)
+      else
+        range.audience_range_precisions = [1]
+        range.audience_range_values = [value.to_i]
+      end
+      product.audience_ranges << range
+    end
+
+    def add_illustration(type, description = '')
+      illustration = ::ONIX::Illustrations.new
+      illustration.illustration_type = type
+      illustration.illustration_type_description = description
+      product.illustrations << illustration
     end
 
     private
