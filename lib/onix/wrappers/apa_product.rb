@@ -148,12 +148,21 @@ module ONIX
 
     # set a new contributor to this product
     # str should be the contributors name inverted (Healy, James)
-    def add_contributor(str, role = "A01")
+    def add_contributor(str, bio = "", role = "A01")
       contrib = ::ONIX::Contributor.new
       contrib.sequence_number = product.contributors.size + 1
       contrib.contributor_role = role
       contrib.person_name_inverted = str
+      contrib.biographical_note = bio
       product.contributors << contrib
+    end
+
+    # set a new comparable title
+    def add_comp_title(str)
+      supply_own_coding = ::ONIX::SupplierOwnCoding.new
+      supply_own_coding.supplier_code_type = "05"
+      supply_own_coding.supplier_code_value = str
+      product.supplier_own_coding << supply_own_coding
     end
 
     # return an array of BIC subjects for this title

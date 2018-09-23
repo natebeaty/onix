@@ -125,6 +125,7 @@ end
   "elements/price",
   "elements/reissue",
   "elements/supply_detail",
+  "elements/supplier_own_coding",
   "elements/market_representation",
   "elements/measure",
   "elements/bible",

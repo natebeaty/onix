@@ -157,6 +157,7 @@ class ONIX::Product < ONIX::Element
 
   # PR.24 Supplier, availability and prices
   onix_composite :supply_details, ONIX::SupplyDetail
+  onix_composite :supplier_own_coding, ONIX::SupplierOwnCoding
 
   # PR.25 Market representation
   onix_composite :market_representations, ONIX::MarketRepresentation
