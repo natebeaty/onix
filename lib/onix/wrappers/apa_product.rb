@@ -615,6 +615,10 @@ module ONIX
       product.illustrations << illustration
     end
 
+    def add_price(type, num, currency)
+      price_set(type, num, currency)
+    end
+
     private
 
     # add a new subject to this product
@@ -699,24 +703,25 @@ module ONIX
     end
 
     # retrieve the value of a particular price
-    def price_get(type)
+    def price_get(type, currency='USD')
       supply = find_or_create_supply_detail
       if type.nil?
         supply.prices.first
       else
-        supply.prices.find { |p| p.price_type_code == type }
+        supply.prices.find { |p| (p.price_type_code == type and p.currency_code == currency) }
       end
     end
 
     # set the value of a particular price
-    def price_set(type, num)
-      p = price_get(type)
+    def price_set(type, num, currency='USD')
+      p = price_get(type, currency)
 
       # create a new isbn record if we need to
       if p.nil?
         supply = find_or_create_supply_detail
         p = ONIX::Price.new
         p.price_type_code = type
+        p.currency_code = currency
         supply.prices << p
       end
 
