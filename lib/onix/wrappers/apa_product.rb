@@ -158,11 +158,22 @@ module ONIX
     end
 
     # set a new comparable title
-    def add_comp_title(str)
+    def add_comp_title(isbn)
       supply_own_coding = ::ONIX::SupplierOwnCoding.new
       supply_own_coding.supplier_code_type = "05"
-      supply_own_coding.supplier_code_value = str
+      supply_own_coding.supplier_code_value = isbn
       product.supplier_own_coding << supply_own_coding
+    end
+
+    # add a related product
+    def add_related_product(type, isbn)
+      related = ::ONIX::RelatedProduct.new
+      related.relation_code = type
+      isbn_id = ::ONIX::ProductIdentifier.new
+      isbn_id.product_id_type = "15"
+      isbn_id.id_value = isbn
+      related.product_identifiers << isbn_id
+      product.related_products << related
     end
 
     # return an array of BIC subjects for this title
