@@ -176,6 +176,19 @@ module ONIX
       product.related_products << related
     end
 
+    # add a "supplier own coding" e.g. Publisher’s sales expectation
+    def add_supplier_own_coding(type, isbn)
+      supplier_own_coding = ::ONIX::SupplierOwnCoding.new
+      supplier_own_coding.supplier_code_type = type
+      supplier_own_coding.supplier_code_value = isbn
+      product.supplier_own_coding << supplier_own_coding
+    end
+
+    # public add "other text" method
+    def add_other_text(type, value)
+      other_text_set(type, value)
+    end
+
     # return an array of BIC subjects for this title
     # could be version 1 or version 2, most ONIX files don't
     # specifiy
@@ -772,6 +785,7 @@ module ONIX
       if text.nil?
         text = ONIX::OtherText.new
         text.text_type_code = type
+        text.text_format = '06'
         product.text << text
       end
 
