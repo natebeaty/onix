@@ -321,6 +321,14 @@ module ONIX
       composite.sales_restriction_type = type
     end
 
+    def add_sales_rights(type, countries = "", territories = "WORLD")
+      sales_rights = ::ONIX::SalesRights.new
+      sales_rights.sales_rights_type = type
+      sales_rights.rights_countries = countries
+      sales_rights.rights_territories = territories
+      product.sales_rights << sales_rights
+    end
+
     # retrieve the supplier name
     def supplier_name
       composite = product.supply_details.first
