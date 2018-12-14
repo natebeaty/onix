@@ -23,7 +23,7 @@ class ONIX::SupplyDetail < ONIX::Element
   onix_code_from_list :product_availability, "ProductAvailability", :list => 65
   onix_composite :new_supplier, ONIX::NewSupplier, :singular => true
   onix_code_from_list :date_format, "DateFormat", :list => 55
-  xml_accessor :expected_ship_date, :from => "ExpectedShipDate"
+  onix_date_accessor :expected_ship_date, "ExpectedShipDate"
   onix_date_accessor :on_sale_date, "OnSaleDate"
   xml_accessor :order_time, :from => "OrderTime", :as => Fixnum
   onix_composite :stocks, ONIX::Stock
