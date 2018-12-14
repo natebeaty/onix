@@ -402,6 +402,42 @@ module ONIX
       composite.product_availability = num
     end
 
+    # retrieve the availability code
+    def availability_code
+      composite = product.supply_details.first
+      composite.nil? ? nil : composite.availability_code
+    end
+
+    # set a new availability code (list 54)
+    def availability_code=(num)
+      composite = find_or_create_supply_detail
+      composite.availability_code = num
+    end
+
+    # retrieve the expected ship date
+    def expected_ship_date
+      composite = product.supply_details.first
+      composite.nil? ? nil : composite.expected_ship_date
+    end
+
+    # set a new expected ship date
+    def expected_ship_date=(date)
+      composite = find_or_create_supply_detail
+      composite.expected_ship_date = date
+    end
+
+    # retrieve the expected ship date
+    def on_sale_date
+      composite = product.supply_details.first
+      composite.nil? ? nil : composite.on_sale_date
+    end
+
+    # set a new expected ship date
+    def on_sale_date=(date)
+      composite = find_or_create_supply_detail
+      composite.on_sale_date = date
+    end
+
     # retrieve the number in stock
     def on_hand
       supply = find_or_create_supply_detail
