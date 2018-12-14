@@ -10,6 +10,7 @@ module ONIX
     delegate :edition, :edition=
     delegate :number_of_pages, :number_of_pages=
     delegate :bic_main_subject, :bic_main_subject=
+    delegate :basic_main_subject, :basic_main_subject=
     delegate :publishing_status, :publishing_status=
     delegate :publication_date, :publication_date=
 
