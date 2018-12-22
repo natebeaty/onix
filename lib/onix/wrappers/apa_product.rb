@@ -342,6 +342,18 @@ module ONIX
       composite.supplier_name = str
     end
 
+    # retrieve the pack quantity
+    def pack_quantity
+      composite = product.supply_details.first
+      composite.nil? ? nil : composite.pack_quantity
+    end
+
+    # set the pack quantity
+    def pack_quantity=(num)
+      composite = find_or_create_supply_detail
+      composite.pack_quantity = num
+    end
+
     # retrieve the supplier phone number
     def supplier_phone
       composite = product.supply_details.first
