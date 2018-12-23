@@ -7,7 +7,7 @@ module ONIX
     delegate :notification_type, :notification_type=
     delegate :product_form, :product_form=
     delegate :product_form_detail, :product_form_detail=
-    delegate :edition, :edition=
+    delegate :edition_number, :edition_number=
     delegate :number_of_pages, :number_of_pages=
     delegate :bic_main_subject, :bic_main_subject=
     delegate :basic_main_subject, :basic_main_subject=
