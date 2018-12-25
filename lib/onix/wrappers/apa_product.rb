@@ -700,6 +700,15 @@ module ONIX
       price_set(type, num, currency)
     end
 
+    # add arbitrary media file (e.g. interiors)
+    def add_media_file(type, link_type, value)
+      media = ONIX::MediaFile.new
+      media.media_file_type_code = type
+      media.media_file_link_type_code = link_type
+      media.media_file_link = value.to_s
+      product.media_files << media
+    end
+
     private
 
     # add a new subject to this product
