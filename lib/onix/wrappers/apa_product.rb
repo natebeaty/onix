@@ -122,6 +122,15 @@ module ONIX
       composite.title_of_series = val.to_s
     end
 
+    def number_within_series=(val)
+      composite = product.series.first
+      if composite.nil?
+        composite =  ONIX::Series.new
+        product.series << composite
+      end
+      composite.number_within_series = val.to_s
+    end
+
     # retrieve the current publisher website for this particular product
     def publisher_website
       website(2).try(:website_link)
