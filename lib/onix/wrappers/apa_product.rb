@@ -6,6 +6,7 @@ module ONIX
     delegate :record_reference, :record_reference=
     delegate :notification_type, :notification_type=
     delegate :product_form, :product_form=
+    delegate :epub_type, :epub_type=
     delegate :product_form_detail, :product_form_detail=
     delegate :edition_number, :edition_number=
     delegate :number_of_pages, :number_of_pages=
@@ -157,13 +158,17 @@ module ONIX
     end
 
     # set a new contributor to this product
-    # str should be the contributors name inverted (Healy, James)
-    def add_contributor(str, bio = "", role = "A01")
+    # person_name is contributor name (James Healy)
+    # person_name_inverted is contributor name inverted (Healy, James)
+    def add_contributor(person_name, person_name_inverted, bio = "", role = "A01")
       contrib = ::ONIX::Contributor.new
       contrib.sequence_number = product.contributors.size + 1
       contrib.contributor_role = role
-      contrib.person_name_inverted = str
-      contrib.biographical_note = bio
+      contrib.person_name = person_name
+      contrib.person_name_inverted = person_name_inverted
+      if bio != ""
+        contrib.biographical_note = bio
+      end
       product.contributors << contrib
     end
 
@@ -197,6 +202,11 @@ module ONIX
     # public add "other text" method
     def add_other_text(type, value)
       other_text_set(type, value)
+    end
+
+    # public add "language" method
+    def add_language(role, code, country = "")
+      language_set(role, code, country)
     end
 
     # return an array of BIC subjects for this title
@@ -688,7 +698,7 @@ module ONIX
       range = ONIX::AudienceRange.new
       range.audience_range_qualifier = 17
       # if value is in format "5-12" split it into array
-      if value.match('-')
+      if value.match("-")
         range.audience_range_precisions = [3,4]
         range.audience_range_values = value.split("-").map(&:to_i)
       else
@@ -698,15 +708,17 @@ module ONIX
       product.audience_ranges << range
     end
 
-    def add_illustration(type, description = '')
+    def add_illustration(type, description = "")
       illustration = ::ONIX::Illustrations.new
       illustration.illustration_type = type
-      illustration.illustration_type_description = description
+      if description != ""
+        illustration.illustration_type_description = description
+      end
       product.illustrations << illustration
     end
 
-    def add_price(type, num, currency)
-      price_set(type, num, currency)
+    def add_price(type, num, currency, countries = "", territories = "")
+      price_set(type, num, currency, countries, territories)
     end
 
     # add arbitrary media file (e.g. interiors)
@@ -802,18 +814,18 @@ module ONIX
     end
 
     # retrieve the value of a particular price
-    def price_get(type, currency='USD')
+    def price_get(type, currency="USD", countries="", territories="")
       supply = find_or_create_supply_detail
       if type.nil?
         supply.prices.first
       else
-        supply.prices.find { |p| (p.price_type_code == type and p.currency_code == currency) }
+        supply.prices.find { |p| (p.price_type_code == type and p.currency_code == currency and p.country_codes == countries and territories == territories) }
       end
     end
 
     # set the value of a particular price
-    def price_set(type, num, currency='USD')
-      p = price_get(type, currency)
+    def price_set(type, num, currency="USD", countries="US", territories="")
+      p = price_get(type, currency, countries, territories)
 
       # create a new isbn record if we need to
       if p.nil?
@@ -821,6 +833,12 @@ module ONIX
         p = ONIX::Price.new
         p.price_type_code = type
         p.currency_code = currency
+        if countries != ''
+          p.country_codes = countries
+        end
+        if territories != ''
+          p.territories = territories
+        end
         supply.prices << p
       end
 
@@ -860,12 +878,24 @@ module ONIX
       if text.nil?
         text = ONIX::OtherText.new
         text.text_type_code = type
-        text.text_format = '06'
+        text.text_format = "06"
         product.text << text
       end
 
       # store the new value
       text.text = value.to_s
+    end
+
+    # set a language
+    def language_set(role, code, country = "")
+      language = ONIX::Language.new
+      language.language_role = role
+      language.language_code = code
+      if country != ""
+        language.country_code = country
+      end
+
+      product.languages << language
     end
 
     # retrieve the value of a particular website
