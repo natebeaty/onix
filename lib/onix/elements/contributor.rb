@@ -10,6 +10,10 @@ class ONIX::Contributor < ONIX::NameBase
   onix_composite :person_dates, ONIX::PersonDate
   onix_composite :professional_affiliations, ONIX::ProfessionalAffiliation
   xml_accessor :corporate_name, :from => "CorporateName"
+
+  xml_accessor :person_name, :from => "PersonName"
+  xml_accessor :person_name_inverted, :from => "PersonNameInverted"
+
   xml_accessor :biographical_note, :from => "BiographicalNote"
   onix_composite :websites, ONIX::Website
   xml_accessor :contributor_description, :from => "ContributorDescription"
