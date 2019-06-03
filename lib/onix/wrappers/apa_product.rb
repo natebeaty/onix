@@ -696,9 +696,15 @@ module ONIX
 
     def audience_range=(value)
       range = ONIX::AudienceRange.new
-      range.audience_range_qualifier = 17
+      range.audience_range_qualifier = 11
       # if value is in format "5-12" split it into array
-      if value.match("-")
+      if value.match(/^([\d]+)\-$/)
+        range.audience_range_precisions = [3]
+        range.audience_range_values = [value.gsub(/[^\d]/, '').to_i]
+      elsif value.match(/^\-([\d]+)$/)
+        range.audience_range_precisions = [4]
+        range.audience_range_values = [value.gsub(/[^\d]/, '').to_i]
+      elsif value.match(/^([\d]+)\-([\d]+)$/)
         range.audience_range_precisions = [3,4]
         range.audience_range_values = value.split("-").map(&:to_i)
       else
