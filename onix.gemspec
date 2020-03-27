@@ -21,12 +21,12 @@ Gem::Specification.new do |s|
   s.test_files        = Dir.glob("spec/**/*.rb")
   s.files             = Dir.glob("{lib,support,dtd}/**/**/*") + ["README.md", "CHANGELOG.md"]
 
-  s.add_dependency 'roxml', '~> 3.3'
-  s.add_dependency 'activesupport', '~> 3.2'
-  s.add_dependency 'i18n', '~> 0.7'
-  s.add_dependency 'nokogiri', '~> 1.6'
+  s.add_dependency 'roxml', '~> 4.0'
+  s.add_dependency 'activesupport', '~> 6.0.2'
+  s.add_dependency 'i18n', '~> 1.8.2'
+  s.add_dependency 'nokogiri', '~> 1.10.9'
 
-  s.add_development_dependency 'rake', '~> 10'
-  s.add_development_dependency 'rdoc', '~> 3.12'
-  s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'rake', '~> 13.0'
+  s.add_development_dependency 'rdoc', '~> 6.2'
+  s.add_development_dependency 'rspec', '~> 3.9'
 end
