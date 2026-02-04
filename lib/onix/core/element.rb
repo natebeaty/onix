@@ -64,7 +64,7 @@ module ONIX
       tag_name ||= camelize(name)
       options = options.merge(
         :from => tag_name,
-        :as => Fixnum
+        :as => Integer
       )
       xml_accessor(name, options)
     end
